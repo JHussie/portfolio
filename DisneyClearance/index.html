@@ -59,6 +59,26 @@
   .list-box li{font-size:15px;line-height:1.7;color:var(--charcoal);margin-bottom:10px;}
   .list-box li:last-child{margin-bottom:0;}
 
+  .brief-box{background:var(--card-dark);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:2px;padding:24px 26px;margin-bottom:28px;}
+  .brief-box .label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
+  .brief-meta{font-family:'DM Mono',monospace;font-size:12.5px;color:var(--charcoal-soft);margin-bottom:16px;line-height:1.7;}
+  .brief-body{font-size:15px;line-height:1.7;color:var(--charcoal);}
+  .brief-body p{margin:0 0 12px;}
+  .brief-body p:last-child{margin:0;}
+  .brief-keywords{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .kw{font-family:'DM Mono',monospace;font-size:12px;background:var(--cream);border:1px solid var(--line);padding:4px 10px;border-radius:2px;color:var(--charcoal-soft);}
+
+  .spotify-wrap{margin-bottom:28px;border-radius:12px;overflow:hidden;}
+
+  .tracklist{display:grid;gap:14px;}
+  .track{background:var(--card);border:1px solid var(--line);border-radius:2px;padding:16px 20px;}
+  .track-top{display:grid;grid-template-columns:28px 1fr;gap:14px;margin-bottom:10px;}
+  .track-num{font-family:'DM Mono',monospace;font-size:13px;color:var(--red);padding-top:2px;}
+  .track-title{font-weight:600;font-size:15px;margin-bottom:2px;}
+  .track-artist{font-family:'DM Mono',monospace;font-size:12px;color:var(--charcoal-soft);margin-bottom:8px;}
+  .track-note{font-size:14.5px;line-height:1.6;color:var(--charcoal-soft);margin-bottom:8px;}
+  .track-sync{font-family:'DM Mono',monospace;font-size:12px;color:var(--red);border-top:1px solid var(--line);padding-top:8px;line-height:1.5;}
+
   .btn{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.04em;text-decoration:none;border:1px solid var(--charcoal);color:var(--charcoal);padding:10px 18px;border-radius:2px;transition:.15s;display:inline-block;}
   .btn:hover{background:var(--charcoal);color:var(--cream);}
   .btn.primary{background:var(--red);border-color:var(--red);color:var(--cream);}
@@ -73,6 +93,7 @@
     h1{font-size:32px;}
     .wrap{padding:48px 18px 80px;}
     .stat-row{grid-template-columns:1fr 1fr;}
+    .track-top{grid-template-columns:22px 1fr;}
   }
 </style>
 </head>
@@ -193,60 +214,126 @@
   <section>
     <h2>Brief Response — Meridian (Working Title)</h2>
 
-    <div class="list-box">
+    <div class="brief-box">
       <div class="label">Creative Brief — Illustrative</div>
-      <p style="font-family:'DM Mono',monospace;font-size:12.5px;color:var(--charcoal-soft);margin:0 0 16px;line-height:1.7;">
+      <div class="brief-meta">
         Re: Feature Brief — "Meridian" (Working Title)<br>
         Mood playlist request, Act II — late-night intergenerational scene
-      </p>
-      <p style="font-size:15px;line-height:1.7;color:var(--charcoal);margin:0 0 12px;">A preliminary mood playlist for a film's second act: late-night conversations between a 17-year-old girl of West African and Caribbean descent and her grandmother on a back porch. Slow, intimate, emotionally layered. Music should feel like memory, distance, something loved from far away.</p>
-      <p style="font-size:15px;line-height:1.7;color:var(--charcoal);margin:0;">Genres welcome: Afrobeats, Afropop, soul, R&amp;B, acoustic, neo-soul, Afro-folk, ambient with melodic elements. Lyrical or instrumental both welcome. Independent or mid-size label representation preferred for clearance flexibility.</p>
+      </div>
+      <div class="brief-body">
+        <p>A preliminary mood playlist for a film's second act: late-night conversations between a 17-year-old girl of West African and Caribbean descent and her grandmother on a back porch. Slow, intimate, emotionally layered. Music should feel like memory, distance, something loved from far away.</p>
+        <p>Genres welcome: Afrobeats, Afropop, soul, R&amp;B, acoustic, neo-soul, Afro-folk, ambient with melodic elements. Lyrical or instrumental both welcome. Independent or mid-size label representation preferred for clearance flexibility.</p>
+        <div class="brief-keywords">
+          <span class="kw">intimate</span>
+          <span class="kw">nostalgic</span>
+          <span class="kw">diasporic</span>
+          <span class="kw">tender</span>
+          <span class="kw">grounded</span>
+          <span class="kw">luminous</span>
+        </div>
+      </div>
     </div>
 
-    <div class="spotify-wrap" style="margin-top:28px;border-radius:12px;overflow:hidden;">
+    <div class="spotify-wrap">
       <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/10JGADdIrdOzmlcsYjGQ0i?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
 
-    <div class="cards" style="margin-top:18px;">
+    <div class="tracklist">
 
-      <div class="card">
-        <div class="label">01 — GORGEOUS · Muhsinah</div>
-        <p>Evokes the feeling of finding safe harbor in someone. Sets the emotional container for the scene, the granddaughter arriving into the grandmother's presence. DC-based independent artist, lyrical, slow tempo. Master and publishing likely independent, favorable clearance profile.</p>
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">01</div>
+          <div>
+            <div class="track-title">GORGEOUS</div>
+            <div class="track-artist">Muhsinah</div>
+            <div class="track-note">Evokes the feeling of finding safe harbor in someone. Sets the emotional container for the scene -- the granddaughter arriving into the grandmother's presence.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: DC-based independent artist. Lyrical, slow tempo. Scene opener or quiet establishing cue. Master and publishing likely independent -- favorable clearance profile.</div>
       </div>
 
-      <div class="card">
-        <div class="label">02 — Head in a Jar · Khamari</div>
-        <p>A sinking feeling as you disappear into deep emotions. Independent R&amp;B, cinematic production. Lyrical but understated enough for dialogue-adjacent placement, works well under scene turns.</p>
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">02</div>
+          <div>
+            <div class="track-title">Head in a Jar</div>
+            <div class="track-artist">Khamari</div>
+            <div class="track-note">A sinking feeling as you disappear into deep emotions. The granddaughter absorbing the weight of what she's hearing for the first time.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: Independent R&amp;B, cinematic production. Lyrical but understated enough for dialogue-adjacent placement. Works well under scene turns.</div>
       </div>
 
-      <div class="card">
-        <div class="label">03 — Sunny Days · Kennedy Ryon</div>
-        <p>Bluesy like the past, lyrically illustrates how truth coming to light may not feel good in the moment but is necessary to move forward. Independent singer-songwriter, Americana-soul hybrid, strong lyrical sync potential for scenes of revelation.</p>
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">03</div>
+          <div>
+            <div class="track-title">Sunny Days</div>
+            <div class="track-artist">Kennedy Ryon</div>
+            <div class="track-note">Bluesy like the past. Lyrically illustrates how truth coming to light may not feel good in the moment but is necessary to move forward.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: Independent singer-songwriter, Americana-soul hybrid. Strong lyrical sync potential for scenes of revelation or reckoning.</div>
       </div>
 
-      <div class="card">
-        <div class="label">04 — Martha · Kennedy Ryon</div>
-        <p>A story of someone's past illuminating someone else's present. Same independent artist as track 03, clearance efficiency if both are selected. More sparse and intimate, works for quieter dialogue moments.</p>
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">04</div>
+          <div>
+            <div class="track-title">Martha</div>
+            <div class="track-artist">Kennedy Ryon</div>
+            <div class="track-note">A story of someone's past illuminating someone else's present. Pairs with Sunny Days to deepen the emotional arc without repeating the same tonal note.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: Same independent artist as track 03 -- clearance efficiency if both are selected. More sparse and intimate than Sunny Days; works for quieter dialogue moments.</div>
       </div>
 
-      <div class="card">
-        <div class="label">05 — Some Nights I Dream of Doors · Obongjayar</div>
-        <p>Sounds like being enveloped in memories, hopes, and fears simultaneously. Nigerian-British independent artist, atmospheric, diasporic production. Lyrical but abstract enough for score-adjacent placement.</p>
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">05</div>
+          <div>
+            <div class="track-title">Some Nights I Dream of Doors</div>
+            <div class="track-artist">Obongjayar</div>
+            <div class="track-note">Sounds like being enveloped in memories, hopes, and fears simultaneously. Musically distant from reality -- perfect for a scene where the grandmother's stories carry the listener somewhere else.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: Nigerian-British independent artist. Atmospheric, diasporic production. Strong international sync potential. Lyrical but abstract enough for score-adjacent placement.</div>
       </div>
 
-      <div class="card">
-        <div class="label">06 — Mama Don't Worry · KIRBY</div>
-        <p>Deep connection to intergenerational themes, honoring sacrifice, learning from the past, forging your own path. Independent soul artist, the emotional peak of the scene sequence.</p>
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">06</div>
+          <div>
+            <div class="track-title">Mama Don't Worry</div>
+            <div class="track-artist">KIRBY</div>
+            <div class="track-note">Deep connection to intergenerational themes -- honoring sacrifice, learning from the past, forging your own path. The emotional peak of the scene sequence.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: Independent soul artist. Lyrical with strong thematic resonance. High sync potential for emotional scene peaks. Master and publishing likely independent.</div>
       </div>
 
-      <div class="card">
-        <div class="label">07 — River · Trevor Jackson</div>
-        <p>Grief, desperation, and the acknowledgement that choices could have been different. Independent R&amp;B/soul, cinematic production, works for the pivot moment before emotional resolution.</p>
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">07</div>
+          <div>
+            <div class="track-title">River</div>
+            <div class="track-artist">Trevor Jackson</div>
+            <div class="track-note">Grief, desperation, and the acknowledgement that choices could have been different. The moment where both characters feel the full weight before they can release it.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: Independent R&amp;B/soul. Cinematic production with strong emotional arc within the track. Works for the pivot moment in a scene before emotional resolution.</div>
       </div>
 
-      <div class="card">
-        <div class="label">08 — Breathe · Jaz Elise</div>
-        <p>The release. This conversation changes the trajectory of both characters. Jamaican independent artist, sings in English and Patois, diasporic texture, gentle outro energy for a closing cue.</p>
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">08</div>
+          <div>
+            <div class="track-title">Breathe</div>
+            <div class="track-artist">Jaz Elise</div>
+            <div class="track-note">The release. This conversation changes the trajectory of both characters. Lets you feel the weight while making clear it won't last -- the scene ends with something lighter than it began.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: Jamaican independent artist, sings in English and Patois. Diasporic texture that answers the brief's non-English lyric request. Gentle outro energy -- strong closing cue.</div>
       </div>
 
     </div>
