@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jabreneé Hussie · Coordinator, Writer and Publisher Relations, Kobalt Music</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F4F1EA;
+    --charcoal:#2A2724;
+    --charcoal-soft:#5C574F;
+    --red:#B3402A;
+    --line:#DAD4C6;
+    --card:#ECE7DC;
+    --card-dark:#E3DDCF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--cream);color:var(--charcoal);font-family:'Instrument Sans',sans-serif;}
+  .wrap{max-width:880px;margin:0 auto;padding:72px 24px 100px;}
+
+  .eyebrow{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:18px;}
+  h1{font-family:'DM Serif Display',serif;font-size:46px;line-height:1.1;font-weight:400;margin:0 0 6px;}
+  .role{font-family:'DM Mono',monospace;font-size:15px;color:var(--charcoal-soft);margin-bottom:36px;}
+
+  .lede{font-size:19px;line-height:1.62;max-width:660px;margin-bottom:56px;}
+  .lede em{font-style:italic;color:var(--red);}
+
+  h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:26px;margin:0 0 22px;border-bottom:1px solid var(--line);padding-bottom:14px;}
+  h3{font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:18px;margin:0 0 10px;}
+
+  section{margin-bottom:64px;}
+
+  .cards{display:grid;gap:18px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:2px;padding:24px 26px;}
+  .card .label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:8px;}
+  .card p{font-size:15.5px;line-height:1.6;color:var(--charcoal-soft);margin:0;}
+
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px;}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:2px;padding:20px 18px;text-align:center;}
+  .stat-num{font-family:'DM Serif Display',serif;font-size:32px;color:var(--red);line-height:1;}
+  .stat-label{font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--charcoal-soft);margin-top:6px;}
+
+  .project{background:var(--card);border:1px solid var(--line);border-radius:2px;margin-bottom:24px;overflow:hidden;}
+  .project-header{padding:22px 26px 16px;}
+  .project-header .label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:8px;}
+  .project-header p{font-size:15px;line-height:1.6;color:var(--charcoal-soft);margin:0 0 16px;}
+  .project-links{display:flex;gap:12px;flex-wrap:wrap;padding:0 26px 22px;}
+  .project-embed{padding:0 26px 22px;}
+
+  .yt-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:2px;}
+  .yt-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+
+  .list-box{background:var(--card-dark);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:2px;padding:24px 26px;}
+  .list-box .label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
+  .list-box ul{margin:0;padding-left:20px;}
+  .list-box li{font-size:15px;line-height:1.7;color:var(--charcoal);margin-bottom:10px;}
+  .list-box li:last-child{margin-bottom:0;}
+
+  .brief-box{background:var(--card-dark);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:2px;padding:24px 26px;margin-bottom:28px;}
+  .brief-box .label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
+  .brief-meta{font-family:'DM Mono',monospace;font-size:12.5px;color:var(--charcoal-soft);margin-bottom:16px;line-height:1.7;}
+  .brief-body{font-size:15px;line-height:1.7;color:var(--charcoal);}
+  .brief-body p{margin:0 0 12px;}
+  .brief-body p:last-child{margin:0;}
+  .brief-keywords{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .kw{font-family:'DM Mono',monospace;font-size:12px;background:var(--cream);border:1px solid var(--line);padding:4px 10px;border-radius:2px;color:var(--charcoal-soft);}
+
+  .spotify-wrap{margin-bottom:28px;border-radius:12px;overflow:hidden;}
+
+  .tracklist{display:grid;gap:14px;}
+  .track{background:var(--card);border:1px solid var(--line);border-radius:2px;padding:16px 20px;}
+  .track-top{display:grid;grid-template-columns:28px 1fr;gap:14px;margin-bottom:10px;}
+  .track-num{font-family:'DM Mono',monospace;font-size:13px;color:var(--red);padding-top:2px;}
+  .track-title{font-weight:600;font-size:15px;margin-bottom:2px;}
+  .track-artist{font-family:'DM Mono',monospace;font-size:12px;color:var(--charcoal-soft);margin-bottom:8px;}
+  .track-note{font-size:14.5px;line-height:1.6;color:var(--charcoal-soft);margin-bottom:8px;}
+  .track-sync{font-family:'DM Mono',monospace;font-size:12px;color:var(--red);border-top:1px solid var(--line);padding-top:8px;line-height:1.5;}
+
+  .btn{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.04em;text-decoration:none;border:1px solid var(--charcoal);color:var(--charcoal);padding:10px 18px;border-radius:2px;transition:.15s;display:inline-block;}
+  .btn:hover{background:var(--charcoal);color:var(--cream);}
+  .btn.primary{background:var(--red);border-color:var(--red);color:var(--cream);}
+  .btn.primary:hover{background:var(--charcoal);border-color:var(--charcoal);}
+  .btn.small{font-size:12px;padding:8px 14px;}
+
+  .footer{border-top:1px solid var(--line);padding-top:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;}
+  .footer .contact{font-family:'DM Mono',monospace;font-size:13px;color:var(--charcoal-soft);}
+  .btnrow{display:flex;gap:12px;flex-wrap:wrap;}
+
+  @media(max-width:600px){
+    h1{font-size:32px;}
+    .wrap{padding:48px 18px 80px;}
+    .stat-row{grid-template-columns:1fr 1fr;}
+    .track-top{grid-template-columns:22px 1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Application · Kobalt Music</div>
+  <h1>Jabreneé Hussie</h1>
+  <div class="role">Coordinator, Writer and Publisher Relations · Nashville, TN</div>
+
+  <p class="lede">
+    A royalty statement is only as accurate as the records behind it. Complete, correct information on every composition has to be in place before an agreement is signed, a catalog is registered, or a statement goes out. I have spent the last two years building that habit by verifying cue sheets, reconciling placement catalogs, and tagging metadata so records stay <em>accurate and searchable</em>, and I want to bring it to Kobalt's Writer and Publisher Relations team.
+  </p>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="stat-num">50-60</div>
+      <div class="stat-label">Cue sheet entries verified per project at Position Music</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">TV, film, trailer, and ad placements cataloged and reconciled</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">10-20</div>
+      <div class="stat-label">DISCO playlists organized by genre, mood, and placement history</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">137</div>
+      <div class="stat-label">Artists tracked in outreach records with a 70% acceptance rate</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Relevant Experience</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="label">Position Music · Synch &amp; Licensing Intern</div>
+        <h3>Cue sheet verification, catalog reconciliation, and metadata</h3>
+        <p>Verified the accuracy of music metadata and licensing documentation across 50-60 cue sheet entries per project, supporting royalty distribution, performance tracking, and PRO reporting. Cataloged and reconciled 200+ TV, film, trailer, and ad placements in Excel and tracked artist tour dates to support public performance licensing and sync outreach. Tagged Kings &amp; Creatures catalog tracks with keywords and genre metadata and organized 10-20 DISCO playlists by genre, mood, and placement history so the library stayed accurate and searchable against client briefs.</p>
+      </div>
+      <div class="card">
+        <div class="label">Inovalon · Technical Intern and Corporate Security Intern</div>
+        <h3>Process design and tracking systems</h3>
+        <p>Designed and implemented a Risk Register system, migrating tracking from Excel to an Access database to improve data accuracy, scalability, and cross-team visibility, then presented the analysis to upper management. In an earlier corporate security internship, tracked policy gaps and open issues in a compliance tracker while handling confidential company information.</p>
+      </div>
+      <div class="card">
+        <div class="label">Shades Collective · Roots &amp; Revelry Production Assistant</div>
+        <h3>Clearance decisions and vendor coordination</h3>
+        <p>Served as the podcast's music supervisor, selecting and clearing tracks within rights and budget constraints. Coordinated with vendors and freelancers on trailer production and post-production, managing timelines, deliverables, and follow-ups for a crowdfunding campaign.</p>
+      </div>
+      <div class="card">
+        <div class="label">Common Thread Entertainment · Talent Management Intern</div>
+        <h3>Contact records and usage-rights checks</h3>
+        <p>Organized and managed industry contact lists for conventions and festivals, tracking outreach and maintaining accurate documentation across 137 artists. Coordinated sourcing of corporate conference B-roll footage, verifying compliance with usage rights and licensing requirements before anything was used.</p>
+      </div>
+      <div class="card">
+        <div class="label">Carnegie Mellon University · Entertainment Industry Management</div>
+        <h3>Royalties, rights, and industry research</h3>
+        <p>Graduate coursework in Music Monetization: Song Royalties, Intellectual Property Rights, Music Supervision, and Artist Development in the Music Industry. My capstone combined executive interviews with leaders at Position Music, Beatport, and Rostrum Records with an original audience survey, culminating in a final presentation and written report for our client Shaboom Records.</p>
+      </div>
+      <div class="card">
+        <div class="label">Lee District Recreation Center · Customer Service Attendant</div>
+        <h3>Client-facing communication</h3>
+        <p>Spent three years serving visitors at the front desk, answering questions clearly, reconciling cash accounts, and managing concessions and retail inventory, which taught me to keep people informed and records accurate at the same time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Rights &amp; Documentation Work</h2>
+
+    <div class="project">
+      <div class="project-header">
+        <div class="label">Music Supervision Coursework · Clearance Breakdown</div>
+        <h3>My Best Friend's Wedding · Music Clearance Breakdown</h3>
+        <p>A script breakdown of the My Best Friend's Wedding screenplay, documenting music usage and its associated licensing costs. The breakdown covers public domain identification, blanket deal strategy, and cost-benefit analysis on recurring placements, with proposed adjustments to either reduce costs or strengthen creative impact, the same kind of structured record publishing administration depends on.</p>
+      </div>
+      <div class="project-links">
+        <a class="btn small" href="https://docs.google.com/document/d/18l9lEbyn9r76I9v4fKgSjbkylaL1L_e5/edit?usp=sharing&ouid=105776221582197537223&rtpof=true&sd=true" target="_blank">View Clearance Breakdown</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <div class="label">Music Supervision Coursework · Spotting Notes</div>
+        <h3>The Truth About Cats and Dogs · Full Edit &amp; Spotting Notes</h3>
+        <p>A 30-minute edit using DaVinci Resolve and Audacity, placing 13 music syncs into raw dialogue and visual footage, with spotting notes documenting the timestamp, scene description, and rationale for each choice. Building the notes taught me to log what a cue is, where it enters, and what has to be tracked and cleared before it can be used.</p>
+      </div>
+      <div class="project-links">
+        <a class="btn small" href="https://drive.google.com/file/d/1Gm_OuRjmeTtclc6lQ_WFo8VJsGZVNWCZ/view?usp=sharing" target="_blank">Watch the Edit</a>
+        <a class="btn small" href="https://docs.google.com/document/d/1VKxxCZQCeMA9NiTLOrmqfN-PPokHcGNJ/edit?usp=sharing" target="_blank">View Spotting Notes</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What I'd Bring to Writer and Publisher Relations</h2>
+    <div class="list-box">
+      <div class="label">Directly Transferable</div>
+      <ul>
+        <li>The habit of confirming a composition's information is complete and accurate before it moves to the next step, from cue sheet verification to catalog reconciliation.</li>
+        <li>Experience tracking placements and metadata at volume, with records kept in a form other people can search and rely on.</li>
+        <li>A technical background (B.S. in Information Technology, plus an Excel-to-Access migration) that makes process improvement and automation work feel natural.</li>
+        <li>Clear written and verbal communication with clients and senior colleagues, and care with confidential materials.</li>
+        <li>A willingness to learn new platforms quickly, having picked up DISCO, Access, and Libsyn on the job.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Also: Music Supervision Work</h2>
+    <p style="font-size:15px;line-height:1.6;color:var(--charcoal-soft);max-width:660px;margin:-8px 0 28px;">Publishing administration is the discipline I lead with for this role. It sits alongside music supervision experience, selecting music and understanding how it clears, which is where I want my career to go. A sample of that range is included here.</p>
+
+    <div class="project">
+      <div class="project-header">
+        <div class="label">Music Supervision Coursework · Scene Edit</div>
+        <h3>Waiting to Exhale · Bernadine Scene</h3>
+        <p>Sourced raw dialogue and visual footage using LyRuno and edited this scene in DaVinci Resolve and Audacity, adding carefully timed music to support the rage and hurt Bernadine was feeling in that moment, from the unique perspective of a Black woman.</p>
+      </div>
+      <div class="project-embed">
+        <div class="yt-wrap">
+          <iframe src="https://www.youtube.com/embed/0ubU6m8LcCI" title="Waiting to Exhale Scene" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Brief Response - Meridian (Working Title)</h2>
+
+    <div class="brief-box">
+      <div class="label">Creative Brief - Illustrative</div>
+      <div class="brief-meta">
+        Re: Feature Brief - "Meridian" (Working Title)<br>
+        Mood playlist request, Act II - late-night intergenerational scene
+      </div>
+      <div class="brief-body">
+        <p>A preliminary mood playlist for a film's second act: late-night conversations between a 17-year-old girl of West African and Caribbean descent and her grandmother on a back porch. Slow, intimate, emotionally layered. Music should feel like memory, distance, something loved from far away.</p>
+        <p>Genres welcome: Afrobeats, Afropop, soul, R&amp;B, acoustic, neo-soul, Afro-folk, ambient with melodic elements. Lyrical or instrumental both welcome. Independent or mid-size label representation preferred for clearance flexibility.</p>
+        <div class="brief-keywords">
+          <span class="kw">intimate</span>
+          <span class="kw">nostalgic</span>
+          <span class="kw">diasporic</span>
+          <span class="kw">tender</span>
+          <span class="kw">grounded</span>
+          <span class="kw">luminous</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="spotify-wrap">
+      <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/10JGADdIrdOzmlcsYjGQ0i?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <div class="tracklist">
+
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">01</div>
+          <div>
+            <div class="track-title">GORGEOUS</div>
+            <div class="track-artist">Muhsinah</div>
+            <div class="track-note">Evokes the feeling of finding safe harbor in someone. Sets the emotional container for the scene -- the granddaughter arriving into the grandmother's presence.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: DC-based independent artist. Lyrical, slow tempo. Scene opener or quiet establishing cue. Master and publishing likely independent -- favorable clearance profile.</div>
+      </div>
+
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">02</div>
+          <div>
+            <div class="track-title">Head in a Jar</div>
+            <div class="track-artist">Khamari</div>
+            <div class="track-note">A sinking feeling as you disappear into deep emotions. The granddaughter absorbing the weight of what she's hearing for the first time.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: Independent R&amp;B, cinematic production. Lyrical but understated enough for dialogue-adjacent placement. Works well under scene turns.</div>
+      </div>
+
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">03</div>
+          <div>
+            <div class="track-title">Sunny Days</div>
+            <div class="track-artist">Kennedy Ryon</div>
+            <div class="track-note">Bluesy like the past. Lyrically illustrates how truth coming to light may not feel good in the moment but is necessary to move forward.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: Independent singer-songwriter, Americana-soul hybrid. Strong lyrical sync potential for scenes of revelation or reckoning.</div>
+      </div>
+
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">04</div>
+          <div>
+            <div class="track-title">Martha</div>
+            <div class="track-artist">Kennedy Ryon</div>
+            <div class="track-note">A story of someone's past illuminating someone else's present. Pairs with Sunny Days to deepen the emotional arc without repeating the same tonal note.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: Same independent artist as track 03 -- clearance efficiency if both are selected. More sparse and intimate than Sunny Days; works for quieter dialogue moments.</div>
+      </div>
+
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">05</div>
+          <div>
+            <div class="track-title">Some Nights I Dream of Doors</div>
+            <div class="track-artist">Obongjayar</div>
+            <div class="track-note">Sounds like being enveloped in memories, hopes, and fears simultaneously. Musically distant from reality -- perfect for a scene where the grandmother's stories carry the listener somewhere else.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: Nigerian-British independent artist. Atmospheric, diasporic production. Strong international sync potential. Lyrical but abstract enough for score-adjacent placement.</div>
+      </div>
+
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">06</div>
+          <div>
+            <div class="track-title">Mama Don't Worry</div>
+            <div class="track-artist">KIRBY</div>
+            <div class="track-note">Deep connection to intergenerational themes -- honoring sacrifice, learning from the past, forging your own path. The emotional peak of the scene sequence.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: Independent soul artist. Lyrical with strong thematic resonance. High sync potential for emotional scene peaks. Master and publishing likely independent.</div>
+      </div>
+
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">07</div>
+          <div>
+            <div class="track-title">River</div>
+            <div class="track-artist">Trevor Jackson</div>
+            <div class="track-note">Grief, desperation, and the acknowledgement that choices could have been different. The moment where both characters feel the full weight before they can release it.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: Independent R&amp;B/soul. Cinematic production with strong emotional arc within the track. Works for the pivot moment in a scene before emotional resolution.</div>
+      </div>
+
+      <div class="track">
+        <div class="track-top">
+          <div class="track-num">08</div>
+          <div>
+            <div class="track-title">Breathe</div>
+            <div class="track-artist">Jaz Elise</div>
+            <div class="track-note">The release. This conversation changes the trajectory of both characters. Lets you feel the weight while making clear it won't last -- the scene ends with something lighter than it began.</div>
+          </div>
+        </div>
+        <div class="track-sync">Sync note: Jamaican independent artist, sings in English and Patois. Diasporic texture that answers the brief's non-English lyric request. Gentle outro energy -- strong closing cue.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="footer">
+    <div class="contact">jabrenee612@gmail.com · (240) 883-2840</div>
+    <div class="btnrow">
+      <a class="btn primary" href="KobaltPublishing/Jabrenee_Hussie_Writer_Publisher_Relations_Coordinator_Kobalt_Resume.pdf">Resume</a>
+      <a class="btn" href="https://jhussie.github.io/portfolio">Full Portfolio</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
