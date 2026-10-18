@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jabreneé Hussie</title>
+<meta name="description" content="Jabreneé Hussie: music supervision, sync licensing, rights administration, and production.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: an editorial scroll read like album liner notes. A mono credit column sits left of each section on desktop; a red playhead tracks reading position like a spotting session. */
+:root {
+  --paper: #F3EEE4;
+  --card: #FBF8F2;
+  --ink: #1F1C1A;
+  --muted: #6B635B;
+  --rule: #DCD3C5;
+  --red: #C1352C;
+  --red-soft: #F1DDD7;
+  --on-red: #FFFFFF;
+
+  --display: "DM Serif Display", "Iowan Old Style", Georgia, serif;
+  --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --step--1: clamp(0.78rem, 0.76rem + 0.1vw, 0.84rem);
+  --step-0: clamp(1rem, 0.97rem + 0.15vw, 1.08rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.45vw, 1.45rem);
+  --step-2: clamp(1.55rem, 1.35rem + 0.9vw, 2.1rem);
+  --step-3: clamp(2.1rem, 1.7rem + 1.9vw, 3.3rem);
+  --step-4: clamp(3rem, 2.2rem + 4.2vw, 6.2rem);
+
+  --wrap: 1120px;
+  --gutter-l: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #161413; --card: #1F1C1A; --ink: #EDE6DA; --muted: #A69C90;
+    --rule: #36312C; --red: #E25A4E; --red-soft: #3A211D; --on-red: #161413;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #161413; --card: #1F1C1A; --ink: #EDE6DA; --muted: #A69C90;
+  --rule: #36312C; --red: #E25A4E; --red-soft: #3A211D; --on-red: #161413;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--paper);
+}
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; line-height: 1.08; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+em { font-style: italic; }
+
+.wrap {
+  max-width: var(--wrap); margin: 0 auto;
+  padding-left: var(--gutter-l); padding-right: var(--gutter-r);
+}
+.label {
+  font-family: var(--mono); font-size: var(--step--1); letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted);
+}
+.label .dot { color: var(--red); }
+
+/* ---------- top bar ---------- */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9;
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.bar .wrap { display: flex; align-items: center; gap: 20px; padding-block: 12px; }
+.mark { font-family: var(--display); font-size: 1.25rem; text-decoration: none; white-space: nowrap; }
+.mark span { color: var(--red); }
+.nav { display: flex; gap: 22px; overflow-x: auto; scrollbar-width: none; min-width: 0; flex: 1; }
+.nav::-webkit-scrollbar { display: none; }
+.nav a {
+  font-family: var(--mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase;
+  text-decoration: none; color: var(--muted); white-space: nowrap; padding-block: 4px;
+}
+.nav a:hover, .nav a.on { color: var(--ink); }
+.tc { font-family: var(--mono); font-size: var(--step--1); color: var(--red); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.playhead { position: absolute; left: 0; bottom: -1px; height: 2px; width: 100%; background: var(--red); transform-origin: left; transform: scaleX(0); }
+@media (max-width: 640px) { .tc { display: none; } .nav { gap: 16px; } }
+
+/* ---------- hero ---------- */
+.hero { padding-block: clamp(48px, 8vw, 104px) clamp(32px, 5vw, 56px); }
+.hero .label { display: block; margin-bottom: 22px; }
+.hero h1 { font-size: var(--step-4); letter-spacing: -0.01em; }
+.hero h1 .r { color: var(--red); font-style: italic; }
+.hero .roles { margin-top: 22px; font-family: var(--mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.hero .roles span::before { content: "/ "; color: var(--red); }
+.hero .lede { margin-top: 28px; max-width: 62ch; font-size: var(--step-1); line-height: 1.5; }
+.hero .lede em { font-family: var(--display); font-style: italic; }
+.wave { display: block; width: 100%; height: 96px; margin-top: 40px; }
+.hero-foot { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: var(--step--1);
+  letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none;
+  padding: 12px 18px; border: 1px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.btn:hover { background: var(--ink); color: var(--paper); }
+.btn.primary { background: var(--red); border-color: var(--red); color: var(--on-red); }
+.btn.primary:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.avail { font-size: var(--step--1); color: var(--muted); }
+
+/* ---------- sections ---------- */
+section { border-top: 1px solid var(--rule); }
+.sec { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 40px; padding-block: clamp(56px, 8vw, 96px); }
+.sec > .credit { position: sticky; top: 84px; align-self: start; }
+.sec > .credit .label { display: block; }
+.sec > .credit .note { margin-top: 10px; font-size: var(--step--1); color: var(--muted); max-width: 22ch; }
+.sec h2 { font-size: var(--step-3); }
+.sec .intro { margin-top: 18px; max-width: 64ch; color: var(--muted); }
+@media (max-width: 860px) {
+  .sec { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .sec > .credit { position: static; }
+  .sec > .credit .note { max-width: none; }
+}
+
+/* opening story */
+.story p { font-family: var(--display); font-size: var(--step-2); line-height: 1.3; max-width: 30ch; }
+.story p + p { margin-top: 24px; font-family: var(--body); font-size: var(--step-0); line-height: 1.65; max-width: 62ch; color: var(--muted); }
+
+/* what I do */
+.lanes { margin-top: 36px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--ink); }
+.lane { padding: 24px 24px 26px 0; border-bottom: 1px solid var(--rule); display: grid; gap: 10px; align-content: start; }
+.lane:nth-child(odd) { border-right: 1px solid var(--rule); }
+.lane:nth-child(even) { padding-left: 24px; padding-right: 0; }
+.lane h3 { font-size: var(--step-1); }
+.lane p { color: var(--muted); font-size: 0.97rem; }
+.lane .proof { font-family: var(--mono); font-size: var(--step--1); color: var(--ink); letter-spacing: 0.02em; }
+.lane .proof::before { content: "\2192  "; color: var(--red); }
+@media (max-width: 680px) {
+  .lanes { grid-template-columns: minmax(0, 1fr); }
+  .lane, .lane:nth-child(even) { padding: 22px 0; border-right: 0; }
+}
+
+/* throughline */
+.line { margin-top: 44px; list-style: none; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; position: relative; }
+.line::before { content: ""; position: absolute; left: 0; right: 0; top: 7px; height: 2px; background: var(--rule); }
+.line .fill { position: absolute; left: 0; top: 7px; height: 2px; width: 100%; background: var(--red); transform-origin: left; transform: scaleX(1); transition: transform 1.6s cubic-bezier(.2,.7,.2,1); }
+.line.pre .fill { transform: scaleX(0); }
+.stop { position: relative; padding: 32px 18px 0 0; display: grid; gap: 8px; align-content: start; }
+.stop::before { content: ""; position: absolute; top: 0; left: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--paper); border: 2px solid var(--red); }
+.stop:last-child::before { background: var(--red); }
+.stop .label { color: var(--red); }
+.stop h3 { font-size: var(--step-1); }
+.stop p { font-size: 0.94rem; color: var(--muted); }
+.stop .where { font-family: var(--mono); font-size: var(--step--1); color: var(--ink); }
+@media (max-width: 900px) {
+  .line { grid-template-columns: minmax(0, 1fr); gap: 30px; padding-left: 34px; }
+  .line::before, .line .fill { left: 7px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; }
+  .line .fill { transform-origin: top; }
+  .line.pre .fill { transform: scaleY(0); }
+  .stop { padding: 0; }
+  .stop::before { left: -34px; top: 4px; }
+}
+
+/* work */
+.work { display: grid; gap: clamp(64px, 9vw, 112px); margin-top: 48px; }
+.piece { display: grid; gap: 22px; }
+.piece-head { display: grid; gap: 10px; }
+.piece-head h3 { font-size: var(--step-2); }
+.piece-head .label { color: var(--red); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.tags span { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.04em; padding: 3px 9px; border: 1px solid var(--rule); color: var(--muted); }
+.prose { display: grid; gap: 14px; max-width: 64ch; }
+.prose p { color: var(--ink); }
+.quote {
+  font-family: var(--display); font-style: italic; font-size: var(--step-2); line-height: 1.2;
+  border-left: 3px solid var(--red); padding-left: 22px; max-width: 26ch;
+}
+.links { display: flex; flex-wrap: wrap; gap: 10px 24px; }
+.links a {
+  font-family: var(--mono); font-size: var(--step--1); letter-spacing: 0.05em; text-transform: uppercase;
+  text-decoration: none; border-bottom: 1px solid var(--red); padding-bottom: 2px;
+}
+.links a::after { content: " \2197"; color: var(--red); }
+.links a:hover { color: var(--red); }
+
+.ab { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.take { background: var(--card); border: 1px solid var(--rule); display: grid; grid-template-rows: auto 1fr; }
+.take .meta { padding: 18px 20px 20px; display: grid; gap: 8px; align-content: start; }
+.take .meta .label b { color: var(--ink); font-weight: 500; }
+.take .meta p { font-size: 0.96rem; color: var(--muted); }
+@media (max-width: 720px) { .ab { grid-template-columns: minmax(0, 1fr); } }
+
+.embed { position: relative; background: var(--ink); color: var(--paper); }
+.embed.video { aspect-ratio: 16 / 9; max-width: 100%; }
+.embed.audio { min-height: 152px; }
+.embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.embed.audio iframe { position: static; height: 380px; display: block; }
+.embed .fallback {
+  position: absolute; inset: 0; display: grid; place-content: center; gap: 10px; text-align: center; padding: 16px;
+  text-decoration: none; color: var(--paper);
+}
+.embed.audio .fallback { position: relative; min-height: 152px; }
+.embed .fallback .ico { width: 54px; height: 54px; border-radius: 50%; background: var(--red); display: grid; place-items: center; margin: 0 auto; transition: transform .2s; }
+.embed .fallback:hover .ico { transform: scale(1.08); }
+.embed .fallback .ico svg { width: 20px; height: 20px; fill: #fff; margin-left: 3px; }
+.embed .fallback span { font-family: var(--mono); font-size: var(--step--1); letter-spacing: 0.06em; text-transform: uppercase; }
+
+/* brief */
+.brief { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 860px) { .brief { grid-template-columns: minmax(0, 1fr); } }
+.memo { background: var(--card); border: 1px solid var(--rule); padding: 24px; display: grid; gap: 14px; }
+.memo .row { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 12px; font-size: 0.95rem; }
+.memo .row .label { padding-top: 2px; }
+.memo hr { border: 0; border-top: 1px dashed var(--rule); margin: 4px 0; width: 100%; }
+.memo .mood { display: flex; flex-wrap: wrap; gap: 6px; }
+.memo .mood span { font-family: var(--mono); font-size: 0.74rem; padding: 3px 9px; background: var(--red-soft); color: var(--ink); }
+.memo .flag { font-family: var(--mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.04em; }
+
+.cues { border-top: 1px solid var(--ink); }
+.cue { display: grid; grid-template-columns: 44px minmax(0, 1.1fr) minmax(0, 1.5fr) minmax(0, 1.5fr); gap: 18px; padding: 16px 0; border-bottom: 1px solid var(--rule); font-size: 0.93rem; }
+.cue.head { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 10px 0; }
+.cue .n { font-family: var(--mono); color: var(--red); font-variant-numeric: tabular-nums; }
+.cue .t b { display: block; font-weight: 600; }
+.cue .t i { font-style: normal; color: var(--muted); }
+.cue .s { color: var(--muted); }
+@media (max-width: 760px) {
+  .cue { grid-template-columns: 36px minmax(0, 1fr); gap: 4px 12px; }
+  .cue.head { display: none; }
+  .cue .f, .cue .s { grid-column: 2; }
+  .cue .s { font-size: 0.86rem; }
+}
+
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.doc { border: 1px solid var(--rule); background: var(--card); padding: 24px; display: grid; gap: 12px; align-content: start; }
+.doc h4 { font-family: var(--display); font-weight: 400; font-size: var(--step-1); margin: 0; }
+.doc p { font-size: 0.96rem; color: var(--muted); }
+.codes { display: flex; flex-wrap: wrap; gap: 6px; }
+.codes span { font-family: var(--mono); font-size: 0.74rem; border: 1px solid var(--red); color: var(--red); padding: 2px 8px; }
+@media (max-width: 760px) { .pair { grid-template-columns: minmax(0, 1fr); } }
+
+.figs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); }
+.fig { padding: 18px 16px 18px 0; display: grid; gap: 4px; }
+.fig + .fig { padding-left: 16px; border-left: 1px solid var(--rule); }
+.fig b { font-family: var(--display); font-weight: 400; font-size: var(--step-3); line-height: 1; font-variant-numeric: tabular-nums; }
+.fig span { font-size: 0.86rem; color: var(--muted); }
+@media (max-width: 560px) {
+  .figs { grid-template-columns: minmax(0, 1fr); }
+  .fig + .fig { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); }
+}
+
+/* research */
+.papers { margin-top: 40px; display: grid; gap: 0; border-top: 1px solid var(--ink); }
+.paper { display: grid; grid-template-columns: 170px minmax(0, 1fr); gap: 24px; padding: 26px 0; border-bottom: 1px solid var(--rule); }
+.paper h3 { font-size: var(--step-1); }
+.paper .prose { gap: 10px; }
+.paper .prose p { color: var(--muted); font-size: 0.97rem; }
+@media (max-width: 680px) { .paper { grid-template-columns: minmax(0, 1fr); gap: 8px; } }
+
+/* experience */
+.xp { margin-top: 40px; border-top: 1px solid var(--ink); }
+.job { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.6fr) auto; gap: 8px 24px; padding: 18px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.job b { font-weight: 600; }
+.job .org { color: var(--muted); }
+.job .when { font-family: var(--mono); font-size: var(--step--1); color: var(--muted); text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.job.now .when { color: var(--red); }
+.edu { margin-top: 32px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.edu div { border-top: 2px solid var(--red); padding-top: 14px; display: grid; gap: 4px; }
+.edu b { font-family: var(--display); font-weight: 400; font-size: var(--step-1); }
+.edu span { color: var(--muted); font-size: 0.94rem; }
+@media (max-width: 680px) {
+  .job { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .job .when { text-align: left; }
+  .edu { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* soundtrack */
+.side { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr); gap: 40px; margin-top: 40px; align-items: start; }
+@media (max-width: 860px) { .side { grid-template-columns: minmax(0, 1fr); } }
+.tracks { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--ink); }
+.tracks li { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--rule); transition: background .25s; }
+.tracks li:hover { background: var(--red-soft); }
+.tracks .no { font-family: var(--mono); font-size: var(--step--1); color: var(--red); letter-spacing: 0.04em; padding-top: 3px; }
+.tracks p { font-family: var(--display); font-size: 1.22rem; line-height: 1.3; }
+
+/* vision */
+.vision p { font-size: var(--step-1); line-height: 1.5; max-width: 54ch; }
+.vision p + p { margin-top: 20px; font-size: var(--step-0); color: var(--muted); max-width: 62ch; }
+.vision .quote { margin-top: 36px; }
+
+/* more */
+.more { margin-top: 36px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; border-top: 1px solid var(--ink); }
+.more a { display: grid; gap: 6px; padding: 20px 20px 20px 0; border-bottom: 1px solid var(--rule); text-decoration: none; transition: color .2s; }
+.more a b { font-family: var(--display); font-weight: 400; font-size: var(--step-1); }
+.more a span { font-size: 0.9rem; color: var(--muted); }
+.more a:hover b { color: var(--red); }
+
+/* contact */
+.contact { background: var(--ink); color: var(--paper); border-top: 0; }
+.contact .sec { grid-template-columns: minmax(0, 1fr); }
+.contact h2 { font-size: var(--step-4); }
+.contact h2 .r { color: var(--red); font-style: italic; }
+.contact .lines { margin-top: 32px; display: grid; gap: 14px; }
+.cline { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; font-size: var(--step-1); }
+.cline .label { color: color-mix(in srgb, var(--paper) 60%, transparent); width: 90px; }
+.cline a, .cline span.v { color: var(--paper); text-decoration: none; border-bottom: 1px solid var(--red); user-select: all; }
+.copy { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; background: transparent; color: var(--paper); border: 1px solid color-mix(in srgb, var(--paper) 40%, transparent); padding: 5px 10px; cursor: pointer; }
+.copy:hover { border-color: var(--red); color: var(--red); }
+.foot { margin-top: 56px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.06em; text-transform: uppercase; color: color-mix(in srgb, var(--paper) 55%, transparent); }
+
+/* reveal: elements are visible at rest; only ones below the fold at load get the .pre state */
+.rv { transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
+.rv.pre { opacity: 0; transform: translateY(26px); }
+@media (prefers-reduced-motion: reduce) {
+  .rv, .rv.pre { opacity: 1 !important; transform: none !important; transition: none; }
+  .line .fill, .line.pre .fill { transform: none !important; transition: none; }
+}
+</style>
+</head>
+<body>
+
+
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="#top">J<span>.</span>H<span>.</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#throughline">Throughline</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <span class="tc" id="tc" aria-hidden="true">TC 00:00:00:00</span>
+  </div>
+  <div class="playhead" id="playhead"></div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <span class="label"><span class="dot">&#9679;</span> Portfolio of Jabreneé Hussie</span>
+    <h1>Music. Rights. <span class="r">Story.</span></h1>
+    <div class="roles">
+      <span>Music Supervision</span>
+      <span>Sync Licensing</span>
+      <span>Rights Administration</span>
+      <span>Production</span>
+    </div>
+    <p class="lede">I have always studied how sound makes people feel. First as an engineer, teaching a neural network to hear emotion in speech. Then as a student of the music business. Now as a music supervisor in training, choosing what we hear and making sure it clears. <em>Music supervision is a cultural act,</em> and I want to be in the room where those choices get made.</p>
+    <canvas class="wave" id="wave" aria-hidden="true"></canvas>
+    <div class="hero-foot">
+      <a class="btn primary" href="#work">See selected work</a>
+      <a class="btn" href="#contact">Get in touch</a>
+      <span class="avail">Upper Marlboro, MD. Open to Nashville, New York/NJ, Atlanta. Available for full-time and contract roles.</span>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap sec">
+      <div class="credit"><span class="label">Where it started</span></div>
+      <div class="story rv">
+        <p>The first film that made me fall in love with storytelling was <em>The Five Heartbeats.</em></p>
+        <p>As a kid I quoted it endlessly, and occasionally got in trouble with my parents for the language. What I was really doing was trying to understand something I couldn't put into words yet: music inside a story doesn't just accompany what's happening. It tells you what to feel before you have time to think about it. As a Black woman and a creative professional, I have carried that lesson into everything I've done since.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap sec">
+      <div class="credit"><span class="label">What I do</span><p class="note">Four lanes, one throughline.</p></div>
+      <div>
+        <h2 class="rv">Where I can help your team</h2>
+        <div class="lanes">
+          <div class="lane rv">
+            <h3>Music supervision</h3>
+            <p>Spotting, brief response, script breakdowns, and scene re-supervision with a clear point of view on why each cue works.</p>
+            <span class="proof">Waiting to Exhale, Meridian brief, 13-cue spotting edit</span>
+          </div>
+          <div class="lane rv">
+            <h3>Sync and rights administration</h3>
+            <p>Cue sheet verification, PRO reporting, metadata tagging, DISCO catalog work, and clearance coordination with rights holders.</p>
+            <span class="proof">Position Music, Roots &amp; Revelry</span>
+          </div>
+          <div class="lane rv">
+            <h3>Production and post</h3>
+            <p>Podcast production end to end, audio editing in DaVinci Resolve and Audacity, delivery workflows, and analytics reporting.</p>
+            <span class="proof">AMT Lab, Cinema Sounds &amp; Secrets</span>
+          </div>
+          <div class="lane rv">
+            <h3>Research and data</h3>
+            <p>Executive interviews, industry analysis, and a technical foundation in Python, SQL, and audio machine learning.</p>
+            <span class="proof">CMU capstone, DSU honors thesis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="throughline">
+    <div class="wrap sec">
+      <div class="credit"><span class="label">The throughline</span><p class="note">Two paths that looked like opposites turned out to ask the same question.</p></div>
+      <div>
+        <h2 class="rv">How I got here, and where it goes</h2>
+        <div class="line" id="line" role="list">
+          <span class="fill" aria-hidden="true"></span>
+          <div class="stop" role="listitem">
+            <span class="label">Stage 1</span>
+            <h3>The engineer</h3>
+            <span class="where">Delaware State University</span>
+            <p>B.S. in Information Technology, Summa Cum Laude. Built models that recognize emotion in speech across six languages.</p>
+          </div>
+          <div class="stop" role="listitem">
+            <span class="label">Stage 2</span>
+            <h3>The business</h3>
+            <span class="where">Carnegie Mellon, Heinz College</span>
+            <p>Master of Entertainment Industry Management. Royalties, IP, music supervision, and a capstone built on executive interviews.</p>
+          </div>
+          <div class="stop" role="listitem">
+            <span class="label">Stage 3</span>
+            <h3>The catalog</h3>
+            <span class="where">Position Music</span>
+            <p>Sync and licensing: cue sheets, DISCO playlists against live briefs, and 200+ placements cataloged.</p>
+          </div>
+          <div class="stop" role="listitem">
+            <span class="label">Stage 4</span>
+            <h3>The chair</h3>
+            <span class="where">Roots &amp; Revelry</span>
+            <p>Music supervisor and producer for 10 podcast episodes, clearing tracks with international rights holders.</p>
+          </div>
+          <div class="stop" role="listitem">
+            <span class="label">Next</span>
+            <h3>The room</h3>
+            <span class="where">Music supervision</span>
+            <p>A music supervision role now, and in time, a production company centered on diaspora storytelling.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap sec">
+      <div class="credit"><span class="label">Selected work</span><p class="note">Ordered by where I'm going, not by date.</p></div>
+      <div>
+        <h2 class="rv">The work</h2>
+        <div class="work">
+
+          <article class="piece">
+            <div class="piece-head rv">
+              <span class="label">Music supervision coursework &middot; Carnegie Mellon &middot; 2024</span>
+              <h3>Waiting to Exhale, supervised two ways</h3>
+              <div class="tags"><span>Re-supervision</span><span>Music editing</span><span>DaVinci Resolve</span><span>Cultural analysis</span></div>
+            </div>
+            <div class="prose rv">
+              <p>I re-supervised Bernadine's scene twice: once with my own music choice, once with an AI-suggested alternative. I edited both. Each track expresses hurt and rage, but a Black woman's hurt and rage, chosen through the lens of another Black woman, sounds different from a choice made without that history.</p>
+            </div>
+            <div class="ab">
+              <div class="take rv">
+                <div class="embed video" data-src="https://www.youtube.com/embed/0ubU6m8LcCI" data-title="Waiting to Exhale, Version A">
+                  <a class="fallback" href="https://www.youtube.com/watch?v=0ubU6m8LcCI" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></div><span>Watch version A</span></a>
+                </div>
+                <div class="meta">
+                  <span class="label"><b>Version A</b> &middot; My selection</span>
+                  <p>The rage has texture and history. It knows exactly what it is and where it comes from.</p>
+                </div>
+              </div>
+              <div class="take rv">
+                <div class="embed video" data-src="https://www.youtube.com/embed/Ywzo1hTSwBo" data-title="Waiting to Exhale, Version B">
+                  <a class="fallback" href="https://www.youtube.com/watch?v=Ywzo1hTSwBo" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></div><span>Watch version B</span></a>
+                </div>
+                <div class="meta">
+                  <span class="label"><b>Version B</b> &middot; AI-suggested, my edit</span>
+                  <p>Equally real, but more general. It reaches for a universal register instead of a specific one.</p>
+                </div>
+              </div>
+            </div>
+            <p class="quote rv">Neither version is wrong. But they are not the same.</p>
+          </article>
+
+          <article class="piece">
+            <div class="piece-head rv">
+              <span class="label">Brief response &middot; Illustrative creative brief</span>
+              <h3>Meridian: an Act II mood playlist</h3>
+              <div class="tags"><span>Brief response</span><span>Curation</span><span>Clearance strategy</span></div>
+            </div>
+            <div class="prose rv">
+              <p>Built against a sync brief the same way I built DISCO playlists at Position Music: take a tonal direction and find music that answers it specifically, with a clearance plan for every pick. I wrote the brief to model a real feature request.</p>
+            </div>
+            <div class="brief">
+              <div class="memo rv">
+                <div class="row"><span class="label">Re</span><span>Feature brief, "Meridian" (working title). Mood playlist, Act II.</span></div>
+                <div class="row"><span class="label">Scene</span><span>Late-night conversations on a back porch between a 17-year-old girl of West African and Caribbean descent and her grandmother. Slow, intimate, emotionally layered.</span></div>
+                <div class="row"><span class="label">Feel</span><span>Like memory, distance, something loved from far away.</span></div>
+                <div class="row"><span class="label">Rights</span><span>Independent or mid-size label representation preferred for clearance flexibility.</span></div>
+                <hr>
+                <div class="mood"><span>intimate</span><span>nostalgic</span><span>diasporic</span><span>tender</span><span>grounded</span><span>luminous</span></div>
+                <span class="flag">Brief written by me for illustration</span>
+              </div>
+              <div class="embed audio rv" data-src="https://open.spotify.com/embed/playlist/10JGADdIrdOzmlcsYjGQ0i" data-title="Meridian playlist">
+                <a class="fallback" href="https://open.spotify.com/playlist/10JGADdIrdOzmlcsYjGQ0i" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></div><span>Listen to the playlist</span></a>
+              </div>
+            </div>
+            <div class="cues rv" role="table" aria-label="Meridian cue list">
+              <div class="cue head" role="row"><span role="columnheader">#</span><span role="columnheader">Track</span><span role="columnheader">Job in the scene</span><span role="columnheader">Sync note</span></div>
+              <div class="cue" role="row"><span class="n">01</span><span class="t"><b>GORGEOUS</b><i>Muhsinah</i></span><span class="f">Finding safe harbor in someone. Sets the emotional container as she arrives.</span><span class="s">DC-based independent artist. Favorable clearance profile.</span></div>
+              <div class="cue" role="row"><span class="n">02</span><span class="t"><b>Head in a Jar</b><i>Khamari</i></span><span class="f">The weight of hearing family history for the first time.</span><span class="s">Understated enough for dialogue-adjacent placement.</span></div>
+              <div class="cue" role="row"><span class="n">03</span><span class="t"><b>Sunny Days</b><i>Kennedy Ryon</i></span><span class="f">Truth coming to light isn't comfortable, but it's necessary.</span><span class="s">Independent Americana-soul. Strong lyrical sync potential.</span></div>
+              <div class="cue" role="row"><span class="n">04</span><span class="t"><b>Martha</b><i>Kennedy Ryon</i></span><span class="f">Someone's past illuminating someone else's present.</span><span class="s">Same artist as 03, so one clearance conversation covers both.</span></div>
+              <div class="cue" role="row"><span class="n">05</span><span class="t"><b>Some Nights I Dream of Doors</b><i>Obongjayar</i></span><span class="f">Carried somewhere else by her grandmother's stories.</span><span class="s">Nigerian-British independent. Diasporic texture the brief asks for.</span></div>
+              <div class="cue" role="row"><span class="n">06</span><span class="t"><b>Mama Don't Worry</b><i>KIRBY</i></span><span class="f">Honoring sacrifice and forging your own path. The emotional peak.</span><span class="s">Independent soul. High potential for a scene climax.</span></div>
+              <div class="cue" role="row"><span class="n">07</span><span class="t"><b>River</b><i>Trevor Jackson</i></span><span class="f">Both characters feel the full weight before they can let it go.</span><span class="s">Built-in arc within the track. Works for the pivot.</span></div>
+              <div class="cue" role="row"><span class="n">08</span><span class="t"><b>Breathe</b><i>Jaz Elise</i></span><span class="f">The release. The scene ends lighter than it began.</span><span class="s">Jamaican independent, English and Patois. Answers the non-English lyric ask.</span></div>
+            </div>
+          </article>
+
+          <article class="piece">
+            <div class="piece-head rv">
+              <span class="label">Music supervision coursework &middot; Carnegie Mellon</span>
+              <h3>Spotting and clearance on paper</h3>
+              <div class="tags"><span>Spotting notes</span><span>Script breakdown</span><span>Cost estimation</span></div>
+            </div>
+            <div class="pair">
+              <div class="doc rv">
+                <span class="label">30-minute edit &middot; 13 syncs</span>
+                <h4>The Truth About Cats and Dogs</h4>
+                <p>Placed 13 music syncs into raw dialogue and picture in DaVinci Resolve and Audacity. The spotting notes log each cue's timestamp, scene, emotional job, and the reason behind the choice.</p>
+                <div class="links"><a href="https://drive.google.com/file/d/1Gm_OuRjmeTtclc6lQ_WFo8VJsGZVNWCZ/view?usp=sharing" target="_blank" rel="noopener">Watch the edit</a><a href="https://docs.google.com/document/d/1VKxxCZQCeMA9NiTLOrmqfN-PPokHcGNJ/edit?usp=sharing" target="_blank" rel="noopener">Spotting notes</a></div>
+              </div>
+              <div class="doc rv">
+                <span class="label">Full script breakdown</span>
+                <h4>My Best Friend's Wedding</h4>
+                <p>Every music reference in the screenplay, with scene context, usage type, and licensing cost estimates. Includes public domain identification, a proposed blanket deal with the Bing Crosby estate, and alternatives where a license would break the budget.</p>
+                <div class="codes" aria-label="Usage types covered"><span>VV</span><span>VI</span><span>VD</span><span>BI</span></div>
+                <div class="links"><a href="https://docs.google.com/document/d/18l9lEbyn9r76I9v4fKgSjbkylaL1L_e5/edit?usp=sharing" target="_blank" rel="noopener">View the breakdown</a></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="piece">
+            <div class="piece-head rv">
+              <span class="label">Position Music &middot; Synch &amp; Licensing Intern &middot; 2024</span>
+              <h3>Inside a sync catalog</h3>
+              <div class="tags"><span>DISCO</span><span>Cue sheets</span><span>PRO reporting</span><span>Metadata</span></div>
+            </div>
+            <div class="figs rv">
+              <div class="fig"><b>200+</b><span>TV, film, trailer, and ad placements cataloged</span></div>
+              <div class="fig"><b>50-60</b><span>NBC Sports cue sheet entries verified for accuracy</span></div>
+              <div class="fig"><b>10-20</b><span>DISCO playlists built against creative briefs</span></div>
+            </div>
+            <div class="prose rv">
+              <p>Verified rights data and PRO attribution on cue sheets before they went to partners, tagged Kings &amp; Creatures catalog tracks for sync searchability, and tracked artist tour dates to support licensing and pitching.</p>
+            </div>
+          </article>
+
+          <article class="piece">
+            <div class="piece-head rv">
+              <span class="label">Shades Collective &middot; Roots &amp; Revelry Production Assistant &middot; 2024-2025</span>
+              <h3>Supervising music for a story set in Ghana</h3>
+              <div class="tags"><span>Music supervision</span><span>International clearance</span><span>Trailer production</span></div>
+            </div>
+            <div class="prose rv">
+              <p>Music supervisor and producer for the <em>Rooted N Human</em> podcast across 10 episodes, part of Roots &amp; Revelry, a documentary project based in Ghana. I made creative calls against tonal briefs, cleared tracks directly with international rights holders, and kept tone, rights, and budget aligned. I also managed trailer production and audio post for the Seed &amp; Spark crowdfunding campaign.</p>
+            </div>
+          </article>
+
+          <article class="piece">
+            <div class="piece-head rv">
+              <span class="label">Audio production</span>
+              <h3>Podcasts, from booking to delivery</h3>
+              <div class="tags"><span>Producing</span><span>Editing</span><span>Libsyn</span><span>Chartable</span></div>
+            </div>
+            <div class="pair">
+              <div class="doc rv">
+                <span class="label">Arts Management &amp; Technology Lab &middot; 2023-2024</span>
+                <h4>Podcast Producer</h4>
+                <p>Produced 16 episodes on arts and technology, including the Art++Code and Art++Climate series with the Frank-Ratchye STUDIO for Creative Inquiry. Used listener data to pivot the show to a series model, and ran interviews, editing, and publishing.</p>
+              </div>
+              <div class="doc rv">
+                <span class="label">Cinema Sounds &amp; Secrets &middot; 2024</span>
+                <h4>Sound Editor Intern</h4>
+                <p>Led remote editing sprints for an international podcast and delivered every episode on time. Connected Chartable to Libsyn so the team could see how listeners actually behaved.</p>
+              </div>
+            </div>
+            <div class="embed audio rv" data-src="https://open.spotify.com/embed/playlist/5zlerxiI5RmUHQPb02U1da" data-title="Tech in the Arts podcast episodes">
+              <a class="fallback" href="https://open.spotify.com/playlist/5zlerxiI5RmUHQPb02U1da" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></div><span>Listen to episodes I produced</span></a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="wrap sec">
+      <div class="credit"><span class="label">Research</span><p class="note">How I think about sound, and the industry around it.</p></div>
+      <div>
+        <h2 class="rv">Thinking in public</h2>
+        <div class="papers">
+          <div class="paper rv">
+            <span class="label">Graduate capstone<br>CMU &middot; 2024-2025</span>
+            <div class="prose">
+              <h3>Remixing the Music Industry: Strategies for 21st Century Record Labels</h3>
+              <p>Led strategic analysis of how independent labels adapt to the digital ecosystem. Conducted executive interviews with leaders at Position Music, Beatport, Rostrum Records, and more on how DSPs, social media, and direct-to-fan strategies shape audience building, revenue, and artist empowerment. Delivered to client Shaboom Records.</p>
+            </div>
+          </div>
+          <div class="paper rv">
+            <span class="label">Honors thesis<br>Delaware State</span>
+            <div class="prose">
+              <h3>Speech-Based Emotion Recognition Using Convolutional Neural Networks</h3>
+              <p>Programmed two machine learning models to detect emotional undertones in speech across English, Spanish, French, Korean, Mandarin, and Japanese, instead of the English-only data that dominates the field. The work reached 85% classification accuracy, a 39% improvement over comparable research, and correctly predicted five of the seven emotions studied. It's where I first asked how sound carries feeling.</p>
+              <div class="links"><a href="https://drive.google.com/file/d/1Si7qGT9a61dWsu0Pb1RJui21LG6yRX2G/view?usp=drive_link" target="_blank" rel="noopener">Read the thesis</a></div>
+            </div>
+          </div>
+          <div class="paper rv">
+            <span class="label">Industry analysis</span>
+            <div class="prose">
+              <h3>UMG and AI: Navigating the Future of Music</h3>
+              <p>How Universal Music Group is responding to AI across policy, artist rights, catalog protection, and competitive strategy.</p>
+              <div class="links"><a href="https://docs.google.com/presentation/d/1TO8QCMreUsdzcMO5Vq-QKwaSznBx7Byj/edit" target="_blank" rel="noopener">View the presentation</a></div>
+            </div>
+          </div>
+          <div class="paper rv">
+            <span class="label">TV marketing</span>
+            <div class="prose">
+              <h3>Insecure: A Launch Marketing Plan</h3>
+              <p>A plan written as if the show were premiering for the first time, combining audience and market analysis with experiential, on-air, and digital strategy. I led its development, centered on cultural relevance and representation within the Black community.</p>
+              <div class="links"><a href="https://canva.link/ddgo16exkorbzy9" target="_blank" rel="noopener">View the plan</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap sec">
+      <div class="credit"><span class="label">Experience</span><p class="note">At a glance. Full detail on my resume.</p></div>
+      <div>
+        <h2 class="rv">Credits</h2>
+        <div class="xp rv">
+          <div class="job now"><b>Artificial Intelligence Research Fellow</b><span class="org">Handshake &middot; part-time, remote</span><span class="when">Dec 2025 - Present</span></div>
+          <div class="job"><b>Talent Management Intern</b><span class="org">Common Thread Entertainment</span><span class="when">Jan - May 2025</span></div>
+          <div class="job"><b>Roots &amp; Revelry Production Assistant</b><span class="org">Shades Collective</span><span class="when">Oct 2024 - May 2025</span></div>
+          <div class="job"><b>Synch &amp; Licensing Intern</b><span class="org">Position Music</span><span class="when">Oct - Dec 2024</span></div>
+          <div class="job"><b>Sound Editor Intern</b><span class="org">Cinema Sounds &amp; Secrets Podcast</span><span class="when">Jun - Sep 2024</span></div>
+          <div class="job"><b>Podcast Producer</b><span class="org">Arts Management &amp; Technology Lab, CMU</span><span class="when">Sep 2023 - May 2024</span></div>
+          <div class="job"><b>Technical Intern</b><span class="org">Inovalon</span><span class="when">Jun - Aug 2022</span></div>
+          <div class="job"><b>Corporate Security Intern</b><span class="org">Inovalon</span><span class="when">Jun - Aug 2021</span></div>
+        </div>
+        <div class="edu rv">
+          <div><b>Master of Entertainment Industry Management</b><span>Carnegie Mellon University, Heinz College &middot; 2023 - 2025</span></div>
+          <div><b>B.S. in Information Technology</b><span>Delaware State University, Summa Cum Laude, Honors Program &middot; 2019 - 2023</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap sec">
+      <div class="credit"><span class="label">Who I am</span><p class="note">Six tracks. Press play while you read.</p></div>
+      <div>
+        <h2 class="rv">The Soundtrack That Shapes Me</h2>
+        <div class="side">
+          <ol class="tracks rv">
+            <li><span class="no">Track 1</span><p>Raised in the DMV, I lead with heart, intention, and a deep sense of community.</p></li>
+            <li><span class="no">Track 2</span><p>Playing violin taught me that emotional impact takes repetition, revision, and the willingness to keep listening.</p></li>
+            <li><span class="no">Track 3</span><p>I analyze data, audio, and emotion to tell smarter, more resonant stories.</p></li>
+            <li><span class="no">Track 4</span><p>I see music as a narrative tool, editing for impact, not just sound.</p></li>
+            <li><span class="no">Track 5</span><p>I'm inspired by diverse storytelling, especially BIPOC and queer narratives.</p></li>
+            <li><span class="no">Track 6</span><p>It's not just about telling stories. It's about who gets to be seen and heard.</p></li>
+          </ol>
+          <div class="embed audio rv" data-src="https://open.spotify.com/embed/playlist/6fI2cH02kFA9sSA1fMD9uA" data-title="The Soundtrack That Shapes Me playlist">
+            <a class="fallback" href="https://open.spotify.com/playlist/6fI2cH02kFA9sSA1fMD9uA" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></div><span>Play the soundtrack</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap sec">
+      <div class="credit"><span class="label">Where I'm going</span></div>
+      <div class="vision rv">
+        <p>I'm building toward music supervision: deciding what music goes where and why, with cultural intelligence and real intention, and knowing how to clear it.</p>
+        <p>Longer term, I want to build a production company centered on diaspora storytelling. Black stories, queer stories, and stories that cross borders and generations deserve to be told by people who understand them from the inside, and protected by people who know how to license and steward them correctly. That perspective is what I bring to a team today.</p>
+        <p class="quote">Who is making the decision shapes what gets expressed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap sec">
+      <div class="credit"><span class="label">Go deeper</span><p class="note">Focused portfolios for specific kinds of roles.</p></div>
+      <div>
+        <h2 class="rv">More by focus area</h2>
+        <div class="more rv">
+          <a href="https://jhussie.github.io/portfolio/Droga5MusicSupervisor/" target="_blank" rel="noopener"><b>Music supervision</b><span>Both Waiting to Exhale versions with full analysis, spotting, and the Meridian brief.</span></a>
+          <a href="https://jhussie.github.io/portfolio/MusicOps" target="_blank" rel="noopener"><b>Music rights and operations</b><span>Cue sheets, DISCO catalog work, and clearance coordination.</span></a>
+          <a href="https://jhussie.github.io/portfolio/KobaltPublishing/" target="_blank" rel="noopener"><b>Publishing administration</b><span>Metadata accuracy, catalog reconciliation, and rights documentation.</span></a>
+          <a href="https://jhussie.github.io/milan-records-soundtracks" target="_blank" rel="noopener"><b>Soundtracks and marketing</b><span>Soundtrack sensibility, marketing projects, and the Insecure plan.</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap sec">
+      <div>
+        <span class="label" style="color: color-mix(in srgb, var(--paper) 60%, transparent)">Contact</span>
+        <h2 style="margin-top: 16px">Let's talk <span class="r">music.</span></h2>
+        <div class="lines">
+          <div class="cline"><span class="label">Email</span><a href="mailto:jabrenee612@gmail.com" id="em">jabrenee612@gmail.com</a><button class="copy" type="button" data-copy="jabrenee612@gmail.com">Copy</button></div>
+          <div class="cline"><span class="label">Phone</span><span class="v">(240) 883-2840</span><button class="copy" type="button" data-copy="(240) 883-2840">Copy</button></div>
+          <div class="cline"><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/jabrenee-hussie" target="_blank" rel="noopener">in/jabrenee-hussie</a></div>
+        </div>
+        <div class="foot"><span>Jabreneé Hussie &middot; Upper Marlboro, MD</span><span>Designed and built by hand</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+(function () {
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Embeds: live players only on the real site, where the host allows them. Elsewhere the link cards stay. */
+  if (/github\.io$/.test(location.hostname)) {
+    document.querySelectorAll('.embed[data-src]').forEach(function (el) {
+      var f = document.createElement('iframe');
+      f.src = el.getAttribute('data-src');
+      f.title = el.getAttribute('data-title') || 'Embedded media';
+      f.loading = 'lazy';
+      f.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+      f.setAttribute('allowfullscreen', '');
+      el.innerHTML = '';
+      el.appendChild(f);
+    });
+  }
+
+  /* Playhead and timecode: reading position shown the way a spotting session shows picture position. */
+  var ph = document.getElementById('playhead'), tc = document.getElementById('tc');
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+  var targets = navLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function onScroll() {
+    var max = document.documentElement.scrollHeight - innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, scrollY / max)) : 0;
+    ph.style.transform = 'scaleX(' + p + ')';
+    var frames = Math.round(scrollY / 3), ff = frames % 24, s = Math.floor(frames / 24);
+    tc.textContent = 'TC 01:' + pad(Math.floor(s / 60) % 60) + ':' + pad(s % 60) + ':' + pad(ff);
+    var cur = -1;
+    targets.forEach(function (t, i) { if (t && t.getBoundingClientRect().top < innerHeight * 0.4) cur = i; });
+    navLinks.forEach(function (a, i) { a.classList.toggle('on', i === cur); });
+  }
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* Reveal: only elements below the fold at load get a pre state, so the page is complete at rest. */
+  if (!reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    var items = Array.prototype.slice.call(document.querySelectorAll('.rv, #line'));
+    items.forEach(function (el) {
+      if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('pre'); io.observe(el); }
+    });
+    setTimeout(function () { items.forEach(function (el) { el.classList.remove('pre'); }); }, 12000);
+  }
+
+  /* Copy buttons */
+  document.querySelectorAll('.copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.getAttribute('data-copy');
+      var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1600); };
+      try {
+        navigator.clipboard.writeText(v).then(done, function () { selectText(b.previousElementSibling); });
+      } catch (e) { selectText(b.previousElementSibling); }
+    });
+  });
+  function selectText(el) {
+    try { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {}
+  }
+
+  /* Hero waveform: a speech-like envelope drawn as bars, with a slow playhead sweep. */
+  var cv = document.getElementById('wave');
+  if (!cv || !cv.getContext) return;
+  var ctx = cv.getContext('2d'), bars = [], seed = 7;
+  function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+  for (var i = 0; i < 220; i++) {
+    var x = i / 220;
+    var env = 0.25 + 0.75 * Math.pow(Math.sin(x * Math.PI * 5.2 + 0.6) * 0.5 + 0.5, 1.6) * (0.55 + 0.45 * Math.sin(x * Math.PI));
+    bars.push(Math.max(0.06, env * (0.45 + rnd() * 0.55)));
+  }
+  function colors() {
+    var cs = getComputedStyle(document.documentElement);
+    return { ink: cs.getPropertyValue('--rule').trim() || '#ccc', red: cs.getPropertyValue('--red').trim() || '#c1352c' };
+  }
+  var col = colors();
+  if (window.matchMedia) {
+    matchMedia('(prefers-color-scheme: dark)').addEventListener && matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () { col = colors(); });
+  }
+  new MutationObserver(function () { col = colors(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  var t0 = performance.now();
+  function draw(now) {
+    var dpr = window.devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight;
+    if (cv.width !== Math.round(w * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(h * dpr); }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+    var n = w < 520 ? 110 : bars.length, step = w / n, bw = Math.max(1.5, step * 0.5);
+    var prog = reduce ? 0.38 : ((now - t0) / 14000) % 1;
+    var head = prog * w;
+    for (var i = 0; i < n; i++) {
+      var v = bars[Math.floor(i * bars.length / n)];
+      var bh = v * h * 0.92, x = i * step + (step - bw) / 2;
+      ctx.fillStyle = x < head ? col.red : col.ink;
+      ctx.fillRect(x, (h - bh) / 2, bw, bh);
+    }
+    ctx.fillStyle = col.red;
+    ctx.fillRect(head, 0, 1.5, h);
+    if (!reduce) requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+</script>
+
+</body>
+</html>
