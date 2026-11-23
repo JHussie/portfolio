@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jabreneé Hussie | Book of the Month</title>
+<meta name="description" content="Jabreneé Hussie's portfolio for the Book of the Month Growth & Creative Rotational Program.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Serif+Display:ital@0;1&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* VOICE: warm, first person, a reader talking to readers.
+   IDEA: a bookshelf. Each project is a spine you can pull; the page reads like a book's contents.
+   PICTURE: a shelf of seven work "spines" in the opening, each linking to its case study.
+   COLOUR and TYPE: her site system, cream, charcoal and red; DM Serif Display, Instrument Sans, DM Mono.
+   LAYOUT: opening, shelf, rotations as four chapters, case studies, books and adaptations, contact. */
+:root {
+  --paper: #F3EEE4; --card: #FBF8F2; --ink: #1F1C1A; --muted: #655D55; --rule: #DCD3C5;
+  --red: #C1352C; --red-soft: #F1DDD7; --on-red: #FFFFFF;
+  --sp1: #C1352C; --sp2: #1F1C1A; --sp3: #8A7A68; --sp4: #E6DCCB; --sp5: #5B2620; --spt: #FBF8F2; --spt-light: #1F1C1A;
+  --display: "DM Serif Display", Georgia, serif;
+  --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "DM Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #161413; --card: #201D1B; --ink: #EDE6DA; --muted: #A89E92; --rule: #37312C;
+    --red: #E25A4E; --red-soft: #3A211D; --on-red: #161413;
+    --sp1: #C9443A; --sp2: #3A3430; --sp3: #7C6E5F; --sp4: #D9CDBA; --sp5: #6E2E27; --spt: #F3EEE4; --spt-light: #1F1C1A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #161413; --card: #201D1B; --ink: #EDE6DA; --muted: #A89E92; --rule: #37312C;
+  --red: #E25A4E; --red-soft: #3A211D; --on-red: #161413;
+  --sp1: #C9443A; --sp2: #3A3430; --sp3: #7C6E5F; --sp4: #D9CDBA; --sp5: #6E2E27; --spt: #F3EEE4; --spt-light: #1F1C1A;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; min-width: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16.5px/1.6 var(--body); overflow-x: clip; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+h1, h2, h3, h4 { font-family: var(--display); font-weight: 400; line-height: 1.08; text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.tag { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
+.tag b { color: var(--red); font-weight: 500; }
+
+/* header */
+.bar { position: sticky; top: 0; z-index: 5; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); }
+.bar .wrap { display: flex; align-items: center; gap: 20px; padding-block: 12px; }
+.mark { font-family: var(--display); font-size: 1.2rem; text-decoration: none; white-space: nowrap; }
+.mark span { color: var(--red); }
+.nav { display: flex; gap: 20px; overflow-x: auto; scrollbar-width: none; flex: 1; justify-content: flex-end; }
+.nav::-webkit-scrollbar { display: none; }
+.nav a { font-family: var(--mono); font-size: 0.8rem; text-decoration: none; color: var(--muted); white-space: nowrap; padding-block: 6px; }
+.nav a:hover { color: var(--ink); }
+@media (max-width: 600px) { .nav { justify-content: flex-start; gap: 16px; } }
+
+/* opening */
+.open { padding-block: clamp(40px, 7vw, 88px) 0; display: grid; gap: 22px; }
+.open .txt { display: grid; gap: 22px; }
+@media (min-width: 980px) {
+  .open { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: end; }
+  .shelf-wrap { margin-top: 0; }
+  .shelf { height: 360px; }
+}
+.open h1 { font-size: clamp(2.4rem, 1.6rem + 3.6vw, 4.6rem); max-width: 14ch; }
+.open h1 i { color: var(--red); }
+.open .lede { font-size: clamp(1.08rem, 1rem + 0.4vw, 1.3rem); line-height: 1.55; max-width: 60ch; }
+.open .lede + .lede { font-size: 1rem; color: var(--muted); }
+
+/* shelf */
+.shelf-wrap { margin-top: clamp(32px, 5vw, 56px); }
+.shelf { display: flex; align-items: flex-end; gap: 6px; padding: 0 6px; height: 280px; border-bottom: 10px solid var(--ink); position: relative; }
+.shelf::after { content: ""; position: absolute; left: 0; right: 0; bottom: -22px; height: 12px; background: linear-gradient(var(--rule), transparent); }
+.spine {
+  flex: 1 1 0; max-width: 86px; display: flex; align-items: center; justify-content: center;
+  text-decoration: none; writing-mode: vertical-rl; transform: rotate(180deg);
+  font-family: var(--display); font-size: clamp(0.95rem, 0.8rem + 0.6vw, 1.35rem); line-height: 1;
+  padding: 14px 0; border-radius: 3px 3px 0 0; position: relative;
+  box-shadow: inset -6px 0 0 rgba(0,0,0,.12), inset 2px 0 0 rgba(255,255,255,.18);
+  transition: transform .25s cubic-bezier(.2,.7,.2,1);
+}
+.spine::before, .spine::after { content: ""; position: absolute; left: 8px; right: 8px; height: 2px; background: currentColor; opacity: .45; }
+.spine::before { top: 18px; } .spine::after { bottom: 18px; }
+.spine:hover, .spine:focus-visible { transform: rotate(180deg) translateY(14px); }
+.s1 { background: var(--sp1); color: var(--spt); height: 86%; }
+.s2 { background: var(--sp2); color: var(--spt); height: 96%; }
+.s3 { background: var(--sp4); color: var(--spt-light); height: 78%; }
+.s4 { background: var(--sp3); color: var(--spt); height: 100%; }
+.s5 { background: var(--sp5); color: var(--spt); height: 82%; }
+.s6 { background: var(--sp2); color: var(--spt); height: 90%; }
+.s7 { background: var(--sp1); color: var(--spt); height: 74%; }
+.shelf-note { margin-top: 30px; }
+@media (max-width: 600px) { .shelf { height: 230px; gap: 4px; padding: 0 2px; } .spine { font-size: 0.92rem; } .spine::before, .spine::after { left: 6px; right: 6px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .spine { transition: none; } .spine:hover, .spine:focus-visible { transform: rotate(180deg); } }
+
+/* sections */
+section { border-top: 1px solid var(--rule); }
+.sec { padding-block: clamp(56px, 8vw, 96px); display: grid; gap: 18px; }
+.sec > h2 { font-size: clamp(2rem, 1.5rem + 2vw, 3.1rem); }
+.sec > .intro { max-width: 62ch; color: var(--muted); }
+.first { border-top: 0; }
+
+/* rotations */
+.rots { margin-top: 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--ink); }
+.rot { padding: 26px 26px 28px 0; border-bottom: 1px solid var(--rule); display: grid; gap: 12px; align-content: start; }
+.rot:nth-child(odd) { border-right: 1px solid var(--rule); }
+.rot:nth-child(even) { padding-left: 26px; padding-right: 0; }
+.rot h3 { font-size: 1.55rem; }
+.rot .why { font-size: 1rem; }
+.rot ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.rot li { padding-left: 18px; position: relative; font-size: 0.95rem; color: var(--muted); }
+.rot li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 8px; height: 2px; background: var(--red); }
+.rot li strong { color: var(--ink); font-weight: 600; }
+.see { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); }
+.see a { color: var(--ink); text-decoration-color: var(--red); text-underline-offset: 3px; }
+@media (max-width: 720px) { .rots { grid-template-columns: minmax(0, 1fr); } .rot, .rot:nth-child(even) { padding: 24px 0; border-right: 0; } }
+.course { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.course span { font-size: 0.88rem; padding: 4px 10px; border: 1px solid var(--rule); background: var(--card); }
+
+/* case studies */
+.cases { margin-top: 24px; display: grid; gap: clamp(48px, 7vw, 80px); }
+.case { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr); gap: 32px; align-items: start; }
+.case .head { display: grid; gap: 10px; position: sticky; top: 84px; }
+.case h3 { font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.3rem); }
+.case .body { display: grid; gap: 16px; }
+.case .body p { max-width: 62ch; }
+.fit { background: var(--red-soft); padding: 14px 16px; font-size: 0.96rem; }
+.fit b { font-weight: 600; }
+.links { display: flex; flex-wrap: wrap; gap: 10px 22px; }
+.links a { font-family: var(--mono); font-size: 0.82rem; text-decoration: none; border-bottom: 1px solid var(--red); padding-block: 6px 2px; }
+.links a::after { content: " \2197"; color: var(--red); }
+.links a:hover { color: var(--red); }
+@media (max-width: 820px) { .case { grid-template-columns: minmax(0, 1fr); gap: 16px; } .case .head { position: static; } }
+
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.item { border: 1px solid var(--rule); background: var(--card); padding: 18px; display: grid; gap: 8px; align-content: start; }
+.item h4 { font-size: 1.2rem; }
+.item p { font-size: 0.93rem; color: var(--muted); }
+@media (max-width: 900px) { .trio { grid-template-columns: minmax(0, 1fr); } }
+
+.mood { display: flex; flex-wrap: wrap; gap: 6px; }
+.mood span { font-family: var(--mono); font-size: 0.78rem; padding: 3px 9px; border: 1px solid var(--red); color: var(--red); }
+.tracks { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); columns: 2; column-gap: 24px; }
+.tracks li { break-inside: avoid; padding: 9px 0; border-bottom: 1px solid var(--rule); font-size: 0.93rem; display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; }
+.tracks li span { font-family: var(--mono); color: var(--red); font-size: 0.8rem; padding-top: 2px; }
+.tracks li i { font-style: normal; color: var(--muted); }
+@media (max-width: 600px) { .tracks { columns: 1; } }
+
+.embed { position: relative; background: var(--ink); color: var(--paper); }
+.embed.video { aspect-ratio: 16 / 9; max-width: 100%; }
+.embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.embed.audio { min-height: 120px; }
+.embed.audio iframe { position: static; display: block; height: 352px; }
+.embed .fb { position: absolute; inset: 0; display: grid; place-content: center; gap: 10px; text-align: center; text-decoration: none; color: var(--paper); padding: 16px; }
+.embed.audio .fb { position: relative; min-height: 120px; }
+.embed .fb .ico { width: 50px; height: 50px; border-radius: 50%; background: var(--red); display: grid; place-items: center; margin: 0 auto; }
+.embed .fb .ico svg { width: 18px; height: 18px; fill: #fff; margin-left: 3px; }
+.embed .fb span { font-family: var(--mono); font-size: 0.82rem; }
+
+/* books */
+.books { background: var(--ink); color: var(--paper); border-top: 0; }
+.books .sec > h2 { color: var(--paper); }
+.books .intro { color: color-mix(in srgb, var(--paper) 78%, transparent); max-width: 62ch; font-size: 1.08rem; }
+.reads { margin-top: 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.read { border-top: 2px solid var(--red); padding-top: 18px; display: grid; gap: 12px; }
+.read h3 { font-size: 1.7rem; color: var(--paper); }
+.read .by { font-family: var(--mono); font-size: 0.8rem; color: color-mix(in srgb, var(--paper) 60%, transparent); }
+.read blockquote { margin: 0; font-family: var(--display); font-style: italic; font-size: 1.3rem; line-height: 1.35; color: var(--paper); }
+.books .next { margin-top: 40px; font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); color: var(--paper); }
+.read .say { color: color-mix(in srgb, var(--paper) 85%, transparent); font-size: 1.02rem; }
+.books .close { margin-top: 28px; font-family: var(--display); font-style: italic; font-size: clamp(1.3rem, 1.1rem + 0.8vw, 1.7rem); color: var(--paper); max-width: 34ch; }
+@media (max-width: 720px) { .reads { grid-template-columns: minmax(0, 1fr); } }
+
+/* proof strip */
+.proof { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule); margin-top: 8px; }
+.proof div { padding: 18px 16px 18px 0; display: grid; gap: 4px; }
+.proof div + div { padding-left: 16px; border-left: 1px solid var(--rule); }
+.proof b { font-family: var(--display); font-weight: 400; font-size: clamp(1.9rem, 1.5rem + 1.4vw, 2.6rem); line-height: 1; font-variant-numeric: tabular-nums; }
+.proof span { font-size: 0.88rem; color: var(--muted); }
+@media (max-width: 600px) { .proof { grid-template-columns: minmax(0, 1fr); } .proof div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); } }
+
+/* contact */
+.contact .sec > h2 { font-size: clamp(2.4rem, 1.6rem + 3.4vw, 4.4rem); }
+.contact h2 i { color: var(--red); }
+.lines { display: grid; gap: 12px; margin-top: 8px; }
+.cl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; font-size: 1.1rem; }
+.cl .tag { width: 96px; }
+.cl a, .cl .v { text-decoration: none; border-bottom: 1px solid var(--red); overflow-wrap: anywhere; }
+.copy { font-family: var(--mono); font-size: 0.76rem; background: transparent; color: var(--ink); border: 1px solid var(--rule); padding: 8px 12px; min-height: 36px; cursor: pointer; }
+.copy:hover { border-color: var(--red); color: var(--red); }
+.foot { margin-top: 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="mark" href="#top">J<span>.</span>H<span>.</span></a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#rotations">Rotations</a>
+      <a href="#work">Case studies</a>
+      <a href="#books">Books</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap open">
+    <div class="txt">
+    <span class="tag"><b>For Book of the Month</b> &middot; Growth &amp; Creative Rotational Program</span>
+    <h1>Every story has its <i>readers.</i> I like finding them.</h1>
+    <p class="lede">I'm Jabreneé Hussie. My work so far has lived in entertainment marketing, partnerships, audio production, and music supervision, and it all comes back to one question: how does a story find the people it was made for? I'm also an avid reader, especially of romance, so a company built on matching great books with devoted readers feels like the place where my work and my reading life meet.</p>
+    <p class="lede">A rotational program fits how I learn. I've moved between creative, partnership, and analytical work in every role I've had, and each one made me better at the others.</p>
+    </div>
+    <div class="shelf-wrap">
+      <div class="shelf" role="list" aria-label="Case studies on this page">
+        <a class="spine s1" role="listitem" href="#insecure">Insecure</a>
+        <a class="spine s2" role="listitem" href="#canada-dry">Canada Dry</a>
+        <a class="spine s3" role="listitem" href="#roots-revelry">Roots &amp; Revelry</a>
+        <a class="spine s4" role="listitem" href="#meridian">Meridian</a>
+        <a class="spine s5" role="listitem" href="#supervision">Sound &amp; Story</a>
+        <a class="spine s6" role="listitem" href="#podcast">Tech in the Arts</a>
+        <a class="spine s7" role="listitem" href="#books">My Reads</a>
+      </div>
+      <p class="tag shelf-note">Pull any spine to jump to that case study.</p>
+    </div>
+  </div>
+
+  <section class="first" id="rotations" style="margin-top: clamp(40px, 6vw, 72px); border-top: 1px solid var(--rule);">
+    <div class="wrap sec">
+      <span class="tag">How my experience maps to the program</span>
+      <h2>Four rotations, and where I'd start</h2>
+      <p class="intro">I've organized my work around the rotations I'd move through. Each one lists what I've already done that carries over.</p>
+      <div class="rots">
+        <div class="rot">
+          <h3>Influencer &amp; Partnerships</h3>
+          <p class="why">I've pitched partners with real outreach behind it and built relationships at volume.</p>
+          <ul>
+            <li>Secured <strong>tech and lifestyle sponsorships</strong> for Roots &amp; Revelry with customized decks and outreach emails.</li>
+            <li>Contacted <strong>137 voice-over artists</strong> at Common Thread Entertainment, with a <strong>70% acceptance rate</strong>.</li>
+            <li>Developed a brand partnership concept for Canada Dry, from content ideas to the creative pitch.</li>
+          </ul>
+          <p class="see">See <a href="#roots-revelry">Roots &amp; Revelry</a>, <a href="#canada-dry">Canada Dry</a></p>
+        </div>
+        <div class="rot">
+          <h3>Performance &amp; Analytics</h3>
+          <p class="why">I use data to make content decisions, and I care about getting the records right.</p>
+          <ul>
+            <li>Used audience analytics to move the <strong>Tech in the Arts</strong> podcast to a series model, which increased listenership and engagement.</li>
+            <li>Integrated <strong>Chartable with Libsyn</strong> to track listener behavior for Cinema Sounds &amp; Secrets.</li>
+            <li>Verified metadata across <strong>50-60 cue sheet entries</strong> and cataloged <strong>200+ releases</strong> at Position Music.</li>
+          </ul>
+          <p class="see">See <a href="#podcast">Tech in the Arts</a></p>
+        </div>
+        <div class="rot">
+          <h3>Creative Briefing &amp; Production Management</h3>
+          <p class="why">I can write a brief, answer one, and keep a production on track and on budget.</p>
+          <ul>
+            <li>Wrote a creative brief and built a curated response with a note on every pick.</li>
+            <li>Managed trailer production and audio post for the <strong>Seed &amp; Spark</strong> crowdfunding campaign.</li>
+            <li>Tracked the budget at Shades Collective and found <strong>in-budget alternatives</strong> when sponsorships fell through.</li>
+          </ul>
+          <p class="see">See <a href="#meridian">Meridian</a>, <a href="#supervision">Sound &amp; Story</a></p>
+        </div>
+        <div class="rot">
+          <h3>Social Media</h3>
+          <p class="why">I've run social for a story-driven project and planned content for partners.</p>
+          <ul>
+            <li>Led <strong>TikTok and Instagram campaigns</strong> for Roots &amp; Revelry Ghana.</li>
+            <li>Built <strong>content plans for sponsors</strong> as part of each partnership.</li>
+            <li>Completed the <strong>YouTube Music Certification</strong> in January 2026.</li>
+          </ul>
+          <p class="see">See <a href="#insecure">Insecure</a></p>
+        </div>
+      </div>
+      <div class="course">
+        <span class="tag">Relevant coursework, Carnegie Mellon:</span>
+        <span>Branded Entertainment</span><span>Television Marketing &amp; Advertising</span><span>Market Research in Entertainment</span><span>Fandom in Music in Media</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="wrap sec">
+      <span class="tag">Case studies</span>
+      <h2>The work</h2>
+      <div class="cases">
+
+        <article class="case" id="insecure">
+          <div class="head">
+            <span class="tag"><b>Marketing plan</b> &middot; Television Marketing &amp; Advertising, CMU</span>
+            <h3>Insecure: launching a story to the fans it was made for</h3>
+          </div>
+          <div class="body">
+            <p>A full TV marketing plan for <i>Insecure</i>, written as if the show were premiering for the first time. It combined audience and market analysis with experiential, on-air, and digital strategy, centered on cultural relevance and representation within the Black community. I led its development.</p>
+            <p class="fit"><b>Why it matters here:</b> marketing a story-driven property with a devoted fandom is the same challenge as marketing a book or an adaptation. You start with who the story is for and meet them where they already gather.</p>
+            <div class="links"><a href="https://canva.link/ddgo16exkorbzy9" target="_blank" rel="noopener">View the plan</a></div>
+          </div>
+        </article>
+
+        <article class="case" id="canada-dry">
+          <div class="head">
+            <span class="tag"><b>Branded content</b> &middot; Branded Entertainment, CMU</span>
+            <h3>Canada Dry: building on a cultural staple</h3>
+          </div>
+          <div class="body">
+            <p>A branded content campaign for Canada Dry, built from the brand's positioning and the cultural conversation around it. I connected the campaign to how Black Americans see Canada Dry Ginger Ale as a cultural staple, then developed content ideas and the creative pitch around that connection.</p>
+            <p class="fit"><b>Why it matters here:</b> the best partnerships grow from what an audience already loves. Finding that insight first is how I'd approach creator and brand partnerships.</p>
+            <div class="links"><a href="https://canva.link/5fa8cqrvjwmtrlr" target="_blank" rel="noopener">View the project</a></div>
+          </div>
+        </article>
+
+        <article class="case" id="roots-revelry">
+          <div class="head">
+            <span class="tag"><b>Sponsorship deck</b> &middot; Shades Collective, 2024-2025</span>
+            <h3>Roots &amp; Revelry: pitching partners for real</h3>
+          </div>
+          <div class="body">
+            <p>A sponsorship deck built with a specific partner in mind. It introduced the film and laid out what the partnership could do for the brand and how the brand could help us. This deck was part of the outreach that secured tech and lifestyle sponsorships, alongside tailored outreach emails and follow-up.</p>
+            <p class="fit"><b>Why it matters here:</b> this was live partnership work, not a class exercise. Each pitch was customized to the partner, and each sponsor received a content plan.</p>
+            <div class="links"><a href="https://canva.link/es166e6kk9dlk3m" target="_blank" rel="noopener">View the deck</a></div>
+          </div>
+        </article>
+
+        <article class="case" id="meridian">
+          <div class="head">
+            <span class="tag"><b>Brief response</b> &middot; Illustrative brief I wrote</span>
+            <h3>Meridian: curating to a mood from a written brief</h3>
+          </div>
+          <div class="body">
+            <p>I wrote a creative brief for a film's second act: late-night conversations between a 17-year-old girl of West African and Caribbean descent and her grandmother. The music had to feel like memory, distance, something loved from far away. Then I answered it with an eight-track playlist, with a note on each track's job in the scene.</p>
+            <div class="mood" aria-label="Brief mood words"><span>intimate</span><span>nostalgic</span><span>diasporic</span><span>tender</span><span>grounded</span><span>luminous</span></div>
+            <ol class="tracks">
+              <li><span>01</span><div>GORGEOUS <i>Muhsinah</i></div></li>
+              <li><span>02</span><div>Head in a Jar <i>Khamari</i></div></li>
+              <li><span>03</span><div>Sunny Days <i>Kennedy Ryon</i></div></li>
+              <li><span>04</span><div>Martha <i>Kennedy Ryon</i></div></li>
+              <li><span>05</span><div>Some Nights I Dream of Doors <i>Obongjayar</i></div></li>
+              <li><span>06</span><div>Mama Don't Worry <i>KIRBY</i></div></li>
+              <li><span>07</span><div>River <i>Trevor Jackson</i></div></li>
+              <li><span>08</span><div>Breathe <i>Jaz Elise</i></div></li>
+            </ol>
+            <div class="embed audio" data-src="https://open.spotify.com/embed/playlist/10JGADdIrdOzmlcsYjGQ0i" data-title="Meridian playlist">
+              <a class="fb" href="https://open.spotify.com/playlist/10JGADdIrdOzmlcsYjGQ0i" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></div><span>Listen to the playlist</span></a>
+            </div>
+            <p class="fit"><b>Why it matters here:</b> turning a brief into specific picks, and explaining why each one fits, is the same skill as matching the right book to the right reader each month.</p>
+          </div>
+        </article>
+
+        <article class="case" id="supervision">
+          <div class="head">
+            <span class="tag"><b>Music supervision</b> &middot; Carnegie Mellon</span>
+            <h3>Sound &amp; Story: matching music to a mood and an audience</h3>
+          </div>
+          <div class="body">
+            <p>Music supervision is story analysis. You read a scene, decide what the audience should feel, and find the sound that gets them there.</p>
+            <div class="trio">
+              <div class="item">
+                <span class="tag">30-minute edit &middot; 13 syncs</span>
+                <h4>The Truth About Cats &amp; Dogs</h4>
+                <p>Placed 13 music syncs into raw dialogue and picture, with spotting notes on the timestamp, scene, and reason for each choice.</p>
+                <div class="links"><a href="https://drive.google.com/file/d/1Gm_OuRjmeTtclc6lQ_WFo8VJsGZVNWCZ/view" target="_blank" rel="noopener">Watch</a><a href="https://docs.google.com/document/d/1VKxxCZQCeMA9NiTLOrmqfN-PPokHcGNJ/edit" target="_blank" rel="noopener">Notes</a></div>
+              </div>
+              <div class="item">
+                <span class="tag">Scene edit</span>
+                <h4>Waiting to Exhale</h4>
+                <p>Re-supervised Bernadine's scene, timing the music to the rage and hurt she feels, from the perspective of a Black woman.</p>
+                <div class="links"><a href="https://youtu.be/0ubU6m8LcCI" target="_blank" rel="noopener">Watch</a></div>
+              </div>
+              <div class="item">
+                <span class="tag">Script breakdown</span>
+                <h4>My Best Friend's Wedding</h4>
+                <p>Logged every music reference in the script with licensing cost estimates, and proposed changes to reduce cost or strengthen the creative.</p>
+                <div class="links"><a href="https://docs.google.com/document/d/18l9lEbyn9r76I9v4fKgSjbkylaL1L_e5/edit" target="_blank" rel="noopener">Read</a></div>
+              </div>
+            </div>
+            <div class="embed video" data-src="https://www.youtube.com/embed/0ubU6m8LcCI" data-title="Waiting to Exhale scene edit">
+              <a class="fb" href="https://youtu.be/0ubU6m8LcCI" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></div><span>Watch the Waiting to Exhale edit</span></a>
+            </div>
+            <p class="fit"><b>Why it matters here:</b> the same instinct shapes a book's creative, a trailer, or a social clip. It has to match the mood and aesthetic its readers expect.</p>
+          </div>
+        </article>
+
+        <article class="case" id="podcast">
+          <div class="head">
+            <span class="tag"><b>Podcast producer</b> &middot; Arts Management &amp; Technology Lab, 2023-2024</span>
+            <h3>Tech in the Arts: letting the audience shape the show</h3>
+          </div>
+          <div class="body">
+            <p>I produced 16 episodes from pre-production to publishing, and served as the liaison for our interview guests. Reading our audience analytics, I saw an opportunity to restructure the show, and moved it to a series model. That change increased listenership and engagement.</p>
+            <div class="embed audio" data-src="https://open.spotify.com/embed/playlist/5zlerxiI5RmUHQPb02U1da" data-title="Tech in the Arts episodes">
+              <a class="fb" href="https://open.spotify.com/playlist/5zlerxiI5RmUHQPb02U1da" target="_blank" rel="noopener"><div class="ico"><svg viewBox="0 0 20 20"><path d="M4 2l14 8-14 8z"/></svg></div><span>Listen to episodes I produced</span></a>
+            </div>
+            <p class="fit"><b>Why it matters here:</b> I like learning from what an audience actually does, then changing course. That's the habit I'd bring to performance and member experience work.</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="books" id="books">
+    <div class="wrap sec">
+      <span class="tag" style="color: color-mix(in srgb, var(--paper) 62%, transparent)">Books &amp; adaptations</span>
+      <h2>What I'm reading, and watching</h2>
+      <p class="intro">I'm an avid reader, especially of romance. I follow a lot of book influencers and authors, both indie and traditionally published, and I love following their journeys. I'm also drawn to book adaptations in film and TV, and to the soundtracks built from them. Two adaptations I loved:</p>
+      <div class="reads">
+        <div class="read">
+          <span class="by">Ali Hazelwood</span>
+          <h3>The Love Hypothesis</h3>
+          <blockquote>It felt authentic to how I envisioned the book in my head.</blockquote>
+        </div>
+        <div class="read">
+          <span class="by">Book to screen</span>
+          <h3>Everything, Everything</h3>
+          <blockquote>The soundtrack was ethereal, just like the book. I loved the book so much, and seeing it on screen felt so good. It was a very good adaptation.</blockquote>
+        </div>
+      </div>
+      <h3 class="next">And the adaptations I'm counting down to</h3>
+      <div class="reads">
+        <div class="read">
+          <span class="by">Kennedy Ryan &middot; Skyland series</span>
+          <h3>Before I Let Go</h3>
+          <p class="say">I've read and loved Kennedy Ryan's Skyland series, so I was thrilled when Peacock ordered <i>Before I Let Go</i> to series, with Malcolm D. Lee co-creating and directing. I was so excited to see Teyonah Parris cast as Yasmen and Danielle Brooks as Hendrix, and I can't wait for the Soledad announcement.</p>
+        </div>
+        <div class="read">
+          <span class="by">J.L. Seegars &middot; New Haven series</span>
+          <h3>Restore Me &amp; Revive Me</h3>
+          <p class="say">I'm watching for more news on J.L. Seegars' New Haven series, which Hill 5.14 Media optioned for television. I'm so excited for these.</p>
+        </div>
+      </div>
+      <p class="close">I love these books, and these Black women authors, wholeheartedly.</p>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap sec">
+      <span class="tag">Contact</span>
+      <h2>Let's talk <i>books.</i></h2>
+      <div class="lines">
+        <div class="cl"><span class="tag">Email</span><a href="mailto:jabrenee612@gmail.com">jabrenee612@gmail.com</a><button class="copy" type="button" data-copy="jabrenee612@gmail.com">Copy</button></div>
+        <div class="cl"><span class="tag">LinkedIn</span><a href="https://www.linkedin.com/in/jabrenee-hussie" target="_blank" rel="noopener">linkedin.com/in/jabrenee-hussie</a></div>
+        <div class="cl"><span class="tag">Portfolio</span><a href="https://jhussie.github.io/portfolio/" target="_blank" rel="noopener">jhussie.github.io/portfolio</a></div>
+      </div>
+      <div class="foot tag"><span>Jabreneé Hussie &middot; Upper Marlboro, MD</span><span>Designed and built by hand</span></div>
+    </div>
+  </section>
+</main>
+
+<script>
+{
+  if (/github\.io$/.test(location.hostname)) {
+    document.querySelectorAll('.embed[data-src]').forEach(function (el) {
+      var f = document.createElement('iframe');
+      f.src = el.getAttribute('data-src');
+      f.title = el.getAttribute('data-title') || 'Embedded media';
+      f.loading = 'lazy';
+      f.allow = 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
+      f.setAttribute('allowfullscreen', '');
+      el.textContent = '';
+      el.appendChild(f);
+    });
+  }
+  document.querySelectorAll('.copy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.getAttribute('data-copy');
+      var ok = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = 'Copy'; }, 1600); };
+      var sel = function () { try { var r = document.createRange(); r.selectNodeContents(b.previousElementSibling); var s = getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {} };
+      try { navigator.clipboard.writeText(v).then(ok, sel); } catch (e) { sel(); }
+    });
+  });
+}
+</script>
+</body>
+</html>
