@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jabreneé Hussie | Script Clearance Specialist, Sony Pictures Animation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F4F1EA;
+    --charcoal:#2A2724;
+    --charcoal-soft:#5C574F;
+    --red:#B3402A;
+    --line:#DAD4C6;
+    --card:#ECE7DC;
+    --card-dark:#E3DDCF;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--cream);color:var(--charcoal);font-family:'Instrument Sans',sans-serif;}
+  .wrap{max-width:880px;margin:0 auto;padding:72px 24px 100px;}
+
+  .eyebrow{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--red);margin-bottom:18px;}
+  h1{font-family:'DM Serif Display',serif;font-size:46px;line-height:1.1;font-weight:400;margin:0 0 6px;}
+  .role{font-family:'DM Mono',monospace;font-size:15px;color:var(--charcoal-soft);margin-bottom:36px;}
+
+  .lede{font-size:19px;line-height:1.62;max-width:660px;margin-bottom:56px;}
+  .lede em{font-style:italic;color:var(--red);}
+
+  h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:26px;margin:0 0 22px;border-bottom:1px solid var(--line);padding-bottom:14px;}
+  h3{font-family:'Instrument Sans',sans-serif;font-weight:600;font-size:18px;margin:0 0 10px;}
+
+  section{margin-bottom:64px;}
+
+  .cards{display:grid;gap:18px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:2px;padding:24px 26px;}
+  .card .label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:8px;}
+  .card p{font-size:15.5px;line-height:1.6;color:var(--charcoal-soft);margin:0;}
+
+  .stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:48px;}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:2px;padding:20px 18px;text-align:center;}
+  .stat-num{font-family:'DM Serif Display',serif;font-size:32px;color:var(--red);line-height:1;}
+  .stat-label{font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--charcoal-soft);margin-top:6px;}
+
+  .project{background:var(--card);border:1px solid var(--line);border-radius:2px;margin-bottom:24px;overflow:hidden;}
+  .project-header{padding:22px 26px 16px;}
+  .project-header .label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:8px;}
+  .project-header p{font-size:15px;line-height:1.6;color:var(--charcoal-soft);margin:0 0 16px;}
+  .project-links{display:flex;gap:12px;flex-wrap:wrap;padding:0 26px 22px;}
+  .project-embed{padding:0 26px 22px;}
+
+  .yt-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:2px;}
+  .yt-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+
+  .list-box{background:var(--card-dark);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:2px;padding:24px 26px;}
+  .list-box .label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
+  .list-box ul{margin:0;padding-left:20px;}
+  .list-box li{font-size:15px;line-height:1.7;color:var(--charcoal);margin-bottom:10px;}
+  .list-box li:last-child{margin-bottom:0;}
+
+  .brief-box{background:var(--card-dark);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:2px;padding:24px 26px;margin-bottom:28px;}
+  .brief-box .label{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:14px;}
+  .brief-meta{font-family:'DM Mono',monospace;font-size:12.5px;color:var(--charcoal-soft);margin-bottom:16px;line-height:1.7;}
+  .brief-body{font-size:15px;line-height:1.7;color:var(--charcoal);}
+  .brief-body p{margin:0 0 12px;}
+  .brief-body p:last-child{margin:0;}
+  .brief-keywords{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .kw{font-family:'DM Mono',monospace;font-size:12px;background:var(--cream);border:1px solid var(--line);padding:4px 10px;border-radius:2px;color:var(--charcoal-soft);}
+
+  .spotify-wrap{margin-bottom:28px;border-radius:12px;overflow:hidden;}
+
+  .tracklist{display:grid;gap:14px;}
+  .track{background:var(--card);border:1px solid var(--line);border-radius:2px;padding:16px 20px;}
+  .track-top{display:grid;grid-template-columns:28px 1fr;gap:14px;margin-bottom:10px;}
+  .track-num{font-family:'DM Mono',monospace;font-size:13px;color:var(--red);padding-top:2px;}
+  .track-title{font-weight:600;font-size:15px;margin-bottom:2px;}
+  .track-artist{font-family:'DM Mono',monospace;font-size:12px;color:var(--charcoal-soft);margin-bottom:8px;}
+  .track-note{font-size:14.5px;line-height:1.6;color:var(--charcoal-soft);margin-bottom:8px;}
+  .track-sync{font-family:'DM Mono',monospace;font-size:12px;color:var(--red);border-top:1px solid var(--line);padding-top:8px;line-height:1.5;}
+
+  .btn{font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.04em;text-decoration:none;border:1px solid var(--charcoal);color:var(--charcoal);padding:10px 18px;border-radius:2px;transition:.15s;display:inline-block;}
+  .btn:hover{background:var(--charcoal);color:var(--cream);}
+  .btn.primary{background:var(--red);border-color:var(--red);color:var(--cream);}
+  .btn.primary:hover{background:var(--charcoal);border-color:var(--charcoal);}
+  .btn.small{font-size:12px;padding:8px 14px;}
+
+  .footer{border-top:1px solid var(--line);padding-top:32px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;}
+  .footer .contact{font-family:'DM Mono',monospace;font-size:13px;color:var(--charcoal-soft);}
+  .btnrow{display:flex;gap:12px;flex-wrap:wrap;}
+
+  @media(max-width:600px){
+    h1{font-size:32px;}
+    .wrap{padding:48px 18px 80px;}
+    .stat-row{grid-template-columns:1fr 1fr;}
+    .track-top{grid-template-columns:22px 1fr;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="eyebrow">Application: Sony Pictures Entertainment</div>
+  <h1>Jabreneé Hussie</h1>
+  <div class="role">Script Clearance Specialist, Animation · Culver City, CA</div>
+
+  <p class="lede">
+    Good clearance work protects a story without slowing it down: a careful read, a documented reason for every call, and a creative alternative ready when the answer is no. I have spent my graduate work and my internships building that habit across music, rights, and production documentation, and I want to bring it to Sony Pictures Animation.
+  </p>
+
+  <div class="stat-row">
+    <div class="stat">
+      <div class="stat-num">200+</div>
+      <div class="stat-label">Releases cataloged at Position Music</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">50-60</div>
+      <div class="stat-label">Cue sheet entries verified for accuracy</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">10</div>
+      <div class="stat-label">Podcast episodes with rights holder approval and music curation</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">13</div>
+      <div class="stat-label">Music syncs spotted and documented in one supervised edit</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>Relevant Experience</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="label">Position Music: Synch &amp; Licensing Intern</div>
+        <h3>Metadata accuracy and cue sheet verification</h3>
+        <p>Verified artist music metadata across 50-60 NBC Sports cue sheet entries and cataloged 200+ TV, film, trailer, and ad releases in spreadsheets. Monitored quarterly advertising sync placements and tracked artist tour dates to support public performance licensing, work where one wrong detail follows a project all the way to payment.</p>
+      </div>
+      <div class="card">
+        <div class="label">Shades Collective: Roots &amp; Revelry Production Assistant</div>
+        <h3>Rights holder approval before curation</h3>
+        <p>As Music Supervisor and Producer of the Rooted N Human Podcast, I worked through the project's director to reach an international rights holder, waited for the approval, and only then curated the music for 10 episodes, keeping tone, rights, and budget aligned.</p>
+      </div>
+      <div class="card">
+        <div class="label">Common Thread Entertainment: Talent Management Intern</div>
+        <h3>Usage rights compliance and record keeping</h3>
+        <p>Coordinated sourcing of corporate conference B-roll footage in compliance with usage rights, and organized industry contact lists and outreach records for conventions and festivals.</p>
+      </div>
+      <div class="card">
+        <div class="label">Carnegie Mellon University: Entertainment Industry Management</div>
+        <h3>IP, legal affairs, and script coursework</h3>
+        <p>Graduate coursework in Intellectual Property Rights, Television Business &amp; Legal Affairs, Script/Story Analysis, Music Supervision, and Music Monetization. Capstone research included executive interviews with Position Music, Beatport, and Rostrum Records on how independent labels manage catalogs, licensing, and rights.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Clearance &amp; Documentation Work</h2>
+
+    <div class="project">
+      <div class="project-header">
+        <div class="label">Graduate Coursework: Clearance Breakdown</div>
+        <h3>My Best Friend's Wedding: Full Music Clearance Breakdown</h3>
+        <p>A complete clearance breakdown of the My Best Friend's Wedding screenplay, documenting every scripted music reference with scene context, usage type, licensing cost estimates, and clearance strategy notes. The breakdown covers public domain identification, blanket deal strategy, cost-benefit analysis on recurring placements, and creative alternatives where a track's clearance risk was too high. It is music clearance, not full script legal review, but it is built on the same habit of reading closely and recording the reason for every decision.</p>
+      </div>
+      <div class="project-links">
+        <a class="btn small" href="https://docs.google.com/document/d/18l9lEbyn9r76I9v4fKgSjbkylaL1L_e5/edit?usp=sharing&ouid=105776221582197537223&rtpof=true&sd=true" target="_blank">View Clearance Breakdown</a>
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-header">
+        <div class="label">Graduate Coursework: Spotting Notes</div>
+        <h3>The Truth About Cats and Dogs: Full Edit &amp; Spotting Notes</h3>
+        <p>A 30-minute supervised edit with 13 music syncs and full spotting notes documenting each cue: where it enters, what it needs to do, and what needs to be tracked and cleared before it can be used. Spotting notes are the first record in any clearance workflow, and building them taught me to think about what has to be logged, checked, and accounted for before content moves forward.</p>
+      </div>
+      <div class="project-links">
+        <a class="btn small" href="https://drive.google.com/file/d/1Gm_OuRjmeTtclc6lQ_WFo8VJsGZVNWCZ/view?usp=sharing" target="_blank">Watch the Edit</a>
+        <a class="btn small" href="https://docs.google.com/document/d/1VKxxCZQCeMA9NiTLOrmqfN-PPokHcGNJ/edit?usp=sharing" target="_blank">View Spotting Notes</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What I'd Bring to the Clearance Team</h2>
+    <div class="list-box">
+      <div class="label">Directly Transferable</div>
+      <ul>
+        <li>A habit of documenting the reason behind every clearance call, so a decision can be reviewed and defended later.</li>
+        <li>Experience handling confidential, rights-sensitive material, from cue sheets and licensing documentation to rights holder correspondence.</li>
+        <li>Practice working with production teams to find a workable alternative when the first answer is no.</li>
+        <li>Foundations in intellectual property, legal affairs, and script analysis from graduate coursework, and the drive to keep building them under the guidance of a clearance team.</li>
+        <li>Quick adoption of new systems. I moved a risk register from Excel to an Access database at Inovalon, and I am ready to learn ShotGrid.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Also: Music Supervision Work</h2>
+    <p style="font-size:15px;line-height:1.6;color:var(--charcoal-soft);max-width:660px;margin:-8px 0 28px;">Clearance is the discipline I lead with for this role, but it sits alongside music supervision work, selecting music, not just tracking its paperwork.</p>
+
+    <div class="project">
+      <div class="project-header">
+        <div class="label">Graduate Coursework: Scene Edit</div>
+        <h3>Waiting to Exhale: Angela Bassett Scene Remix</h3>
+        <p>A re-supervised scene from Waiting to Exhale, selecting and placing original music against an existing cut. The goal was to serve the emotional subtext of the scene rather than its surface moment: what does this scene need that dialogue alone cannot provide?</p>
+      </div>
+      <div class="project-embed">
+        <div class="yt-wrap">
+          <iframe src="https://www.youtube.com/embed/0ubU6m8LcCI" title="Waiting to Exhale Scene Remix" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div class="contact">jabrenee612@gmail.com · (240) 883-2840</div>
+    <div class="btnrow">
+      <a class="btn primary" href="Jabrenee_Hussie_Script_Clearance_Specialist_Sony_Resume.pdf">Resume</a>
+      <a class="btn" href="https://jhussie.github.io/portfolio">Full Portfolio</a>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
